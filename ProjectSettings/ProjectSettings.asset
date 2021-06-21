@@ -658,10 +658,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 82951391-563f-42c4-81e5-ef1c09fce93b
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Potato Tactical RPG
+  organizationId: potato-inc-63ca13cf-6ecd-4d26-86ed-71041c64537a
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
