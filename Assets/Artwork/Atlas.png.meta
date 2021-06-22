@@ -20,6 +20,12 @@ TextureImporter:
   - first:
       213: 6615319868462110837
     second: chest_1
+  - first:
+      213: -1347233719151212251
+    second: wizard_1
+  - first:
+      213: 7870480730772048316
+    second: brown_sword
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -234,7 +240,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -242,6 +248,48 @@ TextureImporter:
       bones: []
       spriteID: 5789443fe565ecb50800000000000000
       internalID: 6615319868462110837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5294094021aad4de0800000000000000
+      internalID: -1347233719151212251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brown_sword
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 225
+        width: 8
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb989396680993d60800000000000000
+      internalID: 7870480730772048316
       vertices: []
       indices: 
       edges: []
