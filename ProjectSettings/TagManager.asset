@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Blocking
   - Actor
-  - 
+  - PracticeTarget
   - 
   - 
   - 
@@ -60,4 +60,7 @@ TagManager:
     locked: 0
   - name: Weapon
     uniqueID: 2247450189
+    locked: 0
+  - name: PracticeTarget
+    uniqueID: 1322627537
     locked: 0
