@@ -94,7 +94,7 @@ public class SideMenuController : MonoBehaviour
 
         var pictureContainer = playerGameObject.transform.Find("PictureContainer");
         var containerImg = pictureContainer.GetComponent<Image>();
-        containerImg.color = characterInfo.Team == Team.Team1 ? Color.blue : Color.red;
+        containerImg.color = characterInfo.Team == Team.Team1 ? GlobalResources.Team1Color : GlobalResources.Team2Color;
 
         var picture = pictureContainer.Find("Picture");
         picture.GetComponent<Image>().sprite = characterInfo.Picture;
