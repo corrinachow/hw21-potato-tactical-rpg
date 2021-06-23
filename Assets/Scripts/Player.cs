@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public Tilemap map;
 
     // private BoxCollider2D boxCollider;
-    // private Vector3 moveDelta;
+    private Vector3 lastPosition = new Vector3(0, 0, 0);
 
 
     private void Start()
@@ -35,15 +35,15 @@ public class Player : MonoBehaviour
                 agent.SetDestination(mousePosition);
             }
         }
-        // var x = Input.GetAxisRaw("Horizontal");
-        // var y = Input.GetAxisRaw("Vertical");
-        // moveDelta = new Vector3(x, y, 0);
+
+        Vector3 moveDelta = transform.position - lastPosition;
+        lastPosition = transform.position;
 
         // // Swap sprite direction when going left or right
-        // if (moveDelta.x > 0)
-        //     transform.localScale = Vector3.one;
-        // else if (moveDelta.x < 0)
-        //     transform.localScale = new Vector3(-1, 1, 0);
+        if (moveDelta.x > 0)
+            transform.localScale = Vector3.one;
+        else if (moveDelta.x < 0)
+            transform.localScale = new Vector3(-1, 1, 0);
 
     }
 }
