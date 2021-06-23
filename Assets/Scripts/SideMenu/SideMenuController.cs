@@ -19,22 +19,6 @@ public class SideMenuController : MonoBehaviour
 
     private void Start()
     {
-        charactersInfo.Add(new CharacterInfo
-        {
-            CurrentHP = 1,
-            TotalHP = 100,
-            Team = Team.Team1,
-            Picture = GameObject.Find("Player0")?.GetComponent<SpriteRenderer>()?.sprite,
-        });
-        
-        charactersInfo.Add(new CharacterInfo
-        {
-            CurrentHP = 60,
-            TotalHP = 60,
-            Team = Team.Team2,
-            Picture = GameObject.Find("Player1")?.GetComponent<SpriteRenderer>()?.sprite,
-        });
-        
         Draw();
     }
 
