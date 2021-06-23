@@ -34,4 +34,8 @@ public class Collidable : MonoBehaviour
     {
         Debug.Log(coll.name);
     }
+
+    protected virtual void OnCollisionEnter(Collision coll) {
+        Debug.Log("enter "+ coll.gameObject.name);
+    }
 }
