@@ -12,6 +12,7 @@ public class Warrior : Character
     protected override int CritialHitPercent { get; set; } = 3;
     protected override int Defense { get; set; } = 10; 
     protected override int MagicDefense { get; set; } = 5;
+    protected bool isShieldOpen{get; set;} = false;
     protected override List<Spell> AppliedSpells { get; set; }
     protected override Vector2 Position { get; set; }
 
@@ -51,7 +52,12 @@ public class Warrior : Character
 
     }
 
+    public void Charge(){
+
+    }
+
     public override void Death(){
         // Destroy(gameObject);
     }
+
 }

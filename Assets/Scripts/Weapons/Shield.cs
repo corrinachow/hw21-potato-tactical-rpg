@@ -18,7 +18,7 @@ public class Shield : Weapon
         animator = GetComponent<Animator>();
     }
 
-    protected override void OnCollide(Collider2D coll){
+    protected void OnTriggerEnter2D(Collider2D coll){
         if(coll.tag == "Fighter"){
  
             Buff buff = new Buff {
@@ -31,7 +31,6 @@ public class Shield : Weapon
             coll.SendMessage("ReceiveBuff", buff);
 
             Debug.Log("Shield " + coll.name);
-
         }
     }
 
@@ -42,7 +41,9 @@ public class Shield : Weapon
     }
 
     private void OpenShield(){
-        animator.SetBool("isShieldOpen", true);
+        animator.SetTrigger("ShootMagicArrow");
+
+        animator.SetBool("isShieldUp", true);
         Debug.Log("Shield Open!!");
     }
 }
