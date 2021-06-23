@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Wall
+    uniqueID: 2413537931
+    locked: 0
   - name: Floor
     uniqueID: 1
     locked: 0
@@ -50,9 +53,6 @@ TagManager:
     locked: 0
   - name: Layer 2
     uniqueID: 4250941897
-    locked: 0
-  - name: Wall
-    uniqueID: 2413537931
     locked: 0
   - name: Actor
     uniqueID: 2425651459
