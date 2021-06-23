@@ -4,10 +4,23 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -1007621799875005872
-    second: magic_wand
+    second: red_fountain_0
+      213: 7805335646520212899
+    second: red_fountain_1
+  - first:
+      213: -3691283762694273852
+    second: red_fountain_2
+  - first:
+      213: -978158095919774993
+    second: blue_fountain_2
+  - first:
+      213: 1912478696164768144
+    second: 0x72_DungeonTilesetII_v1.3_4
+  - first:
+      213: 306877116694380785
+    second: blue_fountain_0
   externalObjects: {}
   serializedVersion: 11
-  mipmaps:
     mipMapMode: 0
     enableMipMap: 0
     sRGBTexture: 1
@@ -116,12 +129,127 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      name: red_fountain_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 465
+        width: 16
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 8, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 052b286cf453402f0800000000000000
       internalID: -1007621799875005872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red_fountain_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 465
+        width: 16
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3adf7838a6f125c60800000000000000
+      internalID: 7805335646520212899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red_fountain_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 465
+        width: 16
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c4c07f99fce5ccc0800000000000000
+      internalID: -3691283762694273852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_fountain_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 432
+        width: 16
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe2878ee462ec62f0800000000000000
+      internalID: -978158095919774993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0x72_DungeonTilesetII_v1.3_4
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 432
+        width: 16
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 099376dcd3d7a8a10800000000000000
+      internalID: 1912478696164768144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_fountain_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 432
+        width: 16
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f0c34a9c1f324400800000000000000
+      internalID: 306877116694380785
       vertices: []
       indices: 
       edges: []
