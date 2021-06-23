@@ -34,7 +34,6 @@ public class MagicWand : MonoBehaviour
             // debug purposes only
             Debug.DrawRay(firePoint.position, direction * 1000);
 
-
             // The raycast indicates all the colliders it hit within the layer mask
             // so we check the index of the hits, if it hits a Blocking item before it
             // hits our target, then we know it's not in sight. If it hits our target
