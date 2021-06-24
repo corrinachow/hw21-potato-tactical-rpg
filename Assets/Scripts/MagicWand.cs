@@ -31,9 +31,6 @@ public class MagicWand : MonoBehaviour
             var direction = (practiceTarget.transform.position - firePoint.position).normalized;
             var hit = Physics2D.Raycast(firePoint.position, direction * 1000, 1000, layerMask);
 
-            // debug purposes only
-            Debug.DrawRay(firePoint.position, direction * 1000);
-
             if (hit.transform.CompareTag(targetTag))
             {
                 GameObject go = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity) as GameObject;
