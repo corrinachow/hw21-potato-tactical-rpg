@@ -65,9 +65,8 @@ public class WhiteMage : Character
         LastTurnSpecialAttack = turn;
 
         Buff healBuff =  new Buff{
-            isShieldOpen = false,
-            hasManaward = false,
-            hasBarrier= false,
+            physical = 0,
+            magic = 0,
             health = (int)(25*UnityEngine.Random.Range(1,1.125f)* (2+(Magic*(Magic/256)))),
         };
 
@@ -79,9 +78,8 @@ public class WhiteMage : Character
         LastTurnSpecialAttack = turn;
 
         Buff healBuff =  new Buff{
-            isShieldOpen = false,
-            hasManaward = false,
-            hasBarrier= true,
+            physical = 25,
+            magic = 0,
             health = 0,
         };
 
@@ -92,9 +90,8 @@ public class WhiteMage : Character
         LastTurnSpecialAttack = turn;
 
         Buff healBuff =  new Buff{
-            isShieldOpen = false,
-            hasManaward = true,
-            hasBarrier= false,
+            physical = 0,
+            magic = 25,
             health = 0,
         };
 

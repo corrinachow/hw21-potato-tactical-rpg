@@ -22,9 +22,8 @@ public class Shield : Weapon
         if(coll.tag == "Fighter"){
  
             Buff buff = new Buff {
-                isShieldOpen = true,
-                hasManaward = false,
-                hasBarrier= false,
+                physical = 50,
+                magic = 0,
                 health = 0,
             };
 

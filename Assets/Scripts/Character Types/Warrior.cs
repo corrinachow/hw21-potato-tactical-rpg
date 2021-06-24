@@ -18,7 +18,6 @@ public class Warrior : Character
     public override int Defense { get; protected set; } = 10; 
     public override int MagicDefense { get; protected set; } = 5;
     
-    protected bool isShieldOpen{get; set;} = false;
     protected override List<Spell> AppliedSpells { get; set; }
     protected override Vector2 Position { get; set; }
 
