@@ -58,6 +58,15 @@ public abstract class Character : MonoBehaviour
         throw new NotImplementedException();
     }
 
+    public virtual void CheckIfDead ()
+    {
+        if (CurrentHealth <= 0)
+        {
+            CurrentHealth = 0;
+            Death();
+        }
+    }
+
     public virtual void Death(){
         Destroy(gameObject);
     }

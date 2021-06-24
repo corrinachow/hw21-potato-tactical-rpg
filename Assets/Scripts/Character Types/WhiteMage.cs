@@ -40,17 +40,11 @@ public class WhiteMage : Character
 
     public override void ReceiveDamage(Damage damage){
         CurrentHealth -= damage.damageAmount * ((100 - Defense)/100);
-        if (CurrentHealth <= 0){
-            CurrentHealth = 0;
-            Death();
-        }   
+        base.CheckIfDead();
     }
     public override void ReceiveMagicDamage(Damage damage){
         CurrentHealth -= damage.damageAmount * ((100 - MagicDefense)/100);
-        if (CurrentHealth <= 0){
-            CurrentHealth = 0;
-            Death();
-        }
+        base.CheckIfDead();
     }
 
     public override void DealMagicDamage(){
@@ -100,10 +94,6 @@ public class WhiteMage : Character
 
     public virtual void Move(){
 
-    }
-
-    public override void Death(){
-        Destroy(gameObject);
     }
     
     public override CharacterAction[] GetActions()

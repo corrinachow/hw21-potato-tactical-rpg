@@ -24,26 +24,24 @@ public class BlackMage : Character
     protected override List<Spell> AppliedSpells { get; set; }
     protected override Vector2 Position { get; set; }
 
-    public override void ReceiveDamage(Damage damage){
+    public override void ReceiveDamage(Damage damage)
+    {
         CurrentHealth -= damage.damageAmount * ((100 - Defense)/100);
-        if (CurrentHealth <= 0){
-            CurrentHealth = 0;
-            Death();
-        }   
+        base.CheckIfDead();
     }
-    public override void ReceiveMagicDamage(Damage damage){
+    public override void ReceiveMagicDamage(Damage damage)
+    {
         CurrentHealth -= damage.damageAmount * ((100 - MagicDefense)/100);
-        if (CurrentHealth <= 0){
-            CurrentHealth = 0;
-            Death();
-        }
+        base.CheckIfDead();
     }
 
-    public override void DealMagicDamage(){
+    public override void DealMagicDamage()
+    {
 
     }
 
-    public virtual void Move(){
+    public virtual void Move()
+    {
 
     }
 
@@ -66,10 +64,6 @@ public class BlackMage : Character
         {
             wand.Shoot(target);
         }
-    }
-
-    public override void Death(){
-        // Destroy(gameObject);
     }
 
     public override CharacterAction[] GetActions()
