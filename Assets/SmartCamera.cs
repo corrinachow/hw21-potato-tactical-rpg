@@ -78,7 +78,14 @@ public class SmartCamera : MonoBehaviour
                 0
             );
 
-            overviewCamera.m_Lens.OrthographicSize += Input.mouseScrollDelta.y * zoomSpeed * Time.deltaTime;
+
+            // Don't allow for zooming in too much
+            float nextZoom = overviewCamera.m_Lens.OrthographicSize + Input.mouseScrollDelta.y * zoomSpeed * Time.deltaTime;
+
+            if (nextZoom > 0.1)
+            {
+                overviewCamera.m_Lens.OrthographicSize = nextZoom;
+            }
         }
     }
 
