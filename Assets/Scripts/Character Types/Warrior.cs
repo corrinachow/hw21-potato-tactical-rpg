@@ -1,17 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Warrior : Character
 {
-    protected override int TotalHealth { get; } = 100;
-    protected override int CurrentHealth {get; set;} = 100;
-    protected override int Magic { get; set; } = 5;
-    protected override int Strength { get; set; } = 10;
-    protected override int Speed { get; set; } = 10;
-    protected override int CritialHitPercent { get; set; } = 3;
-    protected override int Defense { get; set; } = 10; 
-    protected override int MagicDefense { get; set; } = 5;
+    public override int TotalHealth { get; } = 100;
+    
+    public override int CurrentHealth {get; protected set;} = 100;
+    public override int Magic { get; protected set; } = 5;
+    public override int Strength { get; protected set; } = 10;
+    public override int Speed { get; protected set; } = 10;
+    public override int CritialHitPercent { get; protected set; } = 3;
+    public override int Defense { get; protected set; } = 10; 
+    public override int MagicDefense { get; protected set; } = 5;
+    
     protected bool isShieldOpen{get; set;} = false;
     protected override List<Spell> AppliedSpells { get; set; }
     protected override Vector2 Position { get; set; }
@@ -60,4 +63,9 @@ public class Warrior : Character
         // Destroy(gameObject);
     }
 
+    public override CharacterAction[] GetActions()
+    {
+        // TODO: To be implemented
+        return Array.Empty<CharacterAction>();
+    }
 }

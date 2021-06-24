@@ -22,20 +22,14 @@ public class SideMenuController : MonoBehaviour
         Draw();
     }
 
-    public void Push(CharacterInfo characterInfo)
+    public void Populate(IEnumerable<CharacterInfo> characterInfos)
     {
-        charactersInfo.Add(characterInfo);
-        Draw();
-    }
+        this.charactersInfo.Clear();
+        foreach (var charInfo in characterInfos)
+        {
+            this.charactersInfo.Add(charInfo);
+        }
 
-    public void Pop()
-    {
-        charactersInfo.RemoveAt(0);
-        Draw();
-    }
-
-    public void UpdatePlayerInfos()
-    {
         Draw();
     }
 

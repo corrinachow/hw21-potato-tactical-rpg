@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 
 public struct Spell
@@ -18,14 +19,14 @@ public struct Spell
 // inherit from, such as White Mage / Black Mage / Warrior
 public abstract class Character : MonoBehaviour
 {
-    abstract protected int TotalHealth { get; }
-    abstract protected int CurrentHealth { get; set; }
-    abstract protected int Magic { get; set; }
-    abstract protected int Strength { get; set; }
-    abstract protected int Speed { get; set; }
-    abstract protected int CritialHitPercent { get; set; }
-    abstract protected int Defense { get; set; }
-    abstract protected int MagicDefense { get; set; }
+    abstract public int TotalHealth { get; }
+    abstract public int CurrentHealth { get; protected set; }
+    abstract public int Magic { get; protected set; }
+    abstract public int Strength { get; protected set; }
+    abstract public int Speed { get; protected set; }
+    abstract public int CritialHitPercent { get; protected set; }
+    abstract public int Defense { get; protected set; }
+    abstract public int MagicDefense { get; protected set; }
 
     abstract protected List<Spell> AppliedSpells { get; set; }
 
@@ -62,4 +63,19 @@ public abstract class Character : MonoBehaviour
     public virtual void Death(){
         Destroy(gameObject);
     }
+
+    public virtual Team GetTeam()
+    {
+        return this.CompareTag("RedTeam") ? Team.Team2 : Team.Team1;
+    }
+
+    public virtual Sprite GetSprite()
+    {
+        var sprite = GetComponent<SpriteRenderer>().sprite;
+        Assert.IsNotNull(sprite, "Could not find the character Sprite");
+
+        return sprite;
+    }
+
+    public abstract CharacterAction[] GetActions();
 }
