@@ -11,29 +11,34 @@ public class Warrior : Character
 
     public override Team Team => team;
     public override string CharacterName => "Warrior";
+
+    [SerializeField]
+    private GameObject axe;
+
     public override int TotalHealth { get; } = 100;
-    
-    public override int CurrentHealth {get; protected set;} = 100;
+
+    public override int CurrentHealth { get; protected set; } = 100;
     public override int Magic { get; protected set; } = 5;
     public override int Strength { get; protected set; } = 10;
     public override int Speed { get; protected set; } = 20;
     public override int CritialHitPercent { get; protected set; } = 3;
-    public override int Defense { get; protected set; } = 10; 
+    public override int Defense { get; protected set; } = 10;
     public override int MagicDefense { get; protected set; } = 5;
-    
+
     protected override List<Spell> AppliedSpells { get; set; }
     protected override Vector2 Position { get; set; }
 
 
-    public override void ReceiveDamage(Damage damage){
-        CurrentHealth -= (int)(damage.damageAmount * ((100f - Defense)/100));
+    public override void ReceiveDamage(Damage damage)
+    {
+        CurrentHealth -= (int)(damage.damageAmount * ((100f - Defense) / 100));
         base.CheckIfDead();
     }
-    public override void ReceiveMagicDamage(Damage damage){
-        CurrentHealth -= damage.damageAmount * ((100 - MagicDefense)/100);
+    public override void ReceiveMagicDamage(Damage damage)
+    {
+        CurrentHealth -= damage.damageAmount * ((100 - MagicDefense) / 100);
         base.CheckIfDead();
     }
-
 
     public override void DealMagicDamage()
     {
@@ -44,25 +49,26 @@ public class Warrior : Character
     {
 
     }
-    
+
     public void Sword(GameObject target, int turn)
     {
 
     }
 
-    public void Charge(GameObject target, int turn) 
+    public void Charge(GameObject target, int turn)
     {
 
     }
 
-    public void Shield(GameObject target, int turn) 
+    public void Shield(GameObject target, int turn)
     {
 
     }
 
     public void AxeThrow(GameObject target, int turn)
     {
-
+        var axeProjectile = axe.GetComponent<Projectile>();
+        axeProjectile.Shoot(target);
     }
 
     public override CharacterAction[] GetActions(int roundIndex)

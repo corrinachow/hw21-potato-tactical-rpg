@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public Team teamToDamage;
     public Transform firePoint;
     public GameObject bulletPrefab;
     public string targetTag = "RedTeam";
@@ -22,9 +23,11 @@ public class Projectile : MonoBehaviour
         return hit.transform.CompareTag(targetTag);
     }
 
-    public void Shoot (GameObject target)
+    public void Shoot(GameObject target)
     {
         GameObject go = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity) as GameObject;
+        Bullet bullet = go.GetComponent<Bullet>();
+        bullet.teamToDamage = teamToDamage;
         go.SendMessage("Fire", Direction(target));
     }
 }
