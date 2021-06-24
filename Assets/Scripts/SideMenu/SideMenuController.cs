@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using UnityEditor.VersionControl;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.UI;
 
 public class SideMenuController : MonoBehaviour
@@ -75,7 +72,9 @@ public class SideMenuController : MonoBehaviour
         containerImg.color = characterInfo.Team == Team.Team1 ? GlobalResources.Team1Color : GlobalResources.Team2Color;
 
         var picture = pictureContainer.Find("Picture");
-        picture.GetComponent<Image>().sprite = characterInfo.Picture;
+        var pictureImg = picture.GetComponent<Image>();
+        pictureImg.sprite = characterInfo.Picture;
+        pictureImg.preserveAspect = true;
 
         var hpBar = playerGameObject.transform.Find("HPBar");
         var hpBarWidth = hpBar.GetComponent<RectTransform>().rect.width;

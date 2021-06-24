@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Warrior : Character
 {
+    public Team team;
+
+    public override Team Team => team;
     public override int TotalHealth { get; } = 100;
     
     public override int CurrentHealth {get; protected set;} = 100;

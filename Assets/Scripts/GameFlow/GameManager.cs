@@ -22,11 +22,10 @@ public class GameManager : MonoBehaviour
         
         sideMenuController = GameObject.Find("SideMenu").GetComponent<SideMenuController>();
         Assert.IsNotNull(sideMenuController);
-
-        // Need to attach Character script component to each character
-        // playableCharacters = DiscoverCharacters();
-        //
-        // StartRound();
+        
+        playableCharacters = DiscoverCharacters();
+        
+        StartRound();
     }
 
     private Character[] DiscoverCharacters()
@@ -44,7 +43,7 @@ public class GameManager : MonoBehaviour
         
         var sorted = characters
             .OrderByDescending(c => c.Speed)
-            .ThenBy(c => (int)c.GetTeam());
+            .ThenBy(c => (int)c.Team);
 
         return sorted.ToArray();
     }
@@ -66,8 +65,8 @@ public class GameManager : MonoBehaviour
             {
                 CurrentHP = character.CurrentHealth,
                 TotalHP = character.TotalHealth,
+                Team = character.Team,
                 Picture = character.GetSprite(),
-                Team = character.GetTeam(),
             };
 
             characterInfo[i] = charInfo;

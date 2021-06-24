@@ -20,6 +20,8 @@ public struct Spell
 public abstract class Character : MonoBehaviour
 {
     abstract public int TotalHealth { get; }
+    abstract public Team Team { get; }
+    
     abstract public int CurrentHealth { get; protected set; }
     abstract public int Magic { get; protected set; }
     abstract public int Strength { get; protected set; }
@@ -62,11 +64,6 @@ public abstract class Character : MonoBehaviour
 
     public virtual void Death(){
         Destroy(gameObject);
-    }
-
-    public virtual Team GetTeam()
-    {
-        return this.CompareTag("RedTeam") ? Team.Team2 : Team.Team1;
     }
 
     public virtual Sprite GetSprite()

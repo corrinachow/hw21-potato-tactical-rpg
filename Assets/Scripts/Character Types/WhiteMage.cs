@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WhiteMage : Character
 {
+    public Team team;
+
+    public override Team Team => team;
     public override int TotalHealth { get; } = 75;
     
     public override int CurrentHealth{get; protected set;} = 75;
