@@ -21819,7 +21819,7 @@ MonoBehaviour:
   moveTarget: {fileID: 1443906039}
   maxMoveCircle: {fileID: 139931805}
   maxMoveDistance: 5
-  isDebug: 1
+  isDebug: 0
   isFacingLeftAtStart: 1
 --- !u!195 &2011373694
 NavMeshAgent:
