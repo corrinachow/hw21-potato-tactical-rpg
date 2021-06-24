@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 
     public GameObject moveTarget;
 
+    public bool isDebug = false;
+
     // private BoxCollider2D boxCollider;
     private Vector3 lastPosition = new Vector3(0, 0, 0);
 
@@ -80,7 +82,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (isDebug && Input.GetMouseButtonDown(0))
         {
             ClickToMove();
         }

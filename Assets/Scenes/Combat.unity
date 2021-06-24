@@ -16184,6 +16184,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2790607644637012774, guid: 50a0b9ecdf1174412a55a347c2da4453,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 17831345}
+    - target: {fileID: 2790607644637012774, guid: 50a0b9ecdf1174412a55a347c2da4453,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 461395105}
     - target: {fileID: 4334557775686879250, guid: 50a0b9ecdf1174412a55a347c2da4453,
         type: 3}
       propertyPath: m_SortingLayer
@@ -16223,6 +16233,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 703234282949685949, guid: 612692fbb1ff749789f23390e1cf7af9,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 17831345}
+    - target: {fileID: 703234282949685949, guid: 612692fbb1ff749789f23390e1cf7af9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 461395105}
     - target: {fileID: 2197964682862853631, guid: 612692fbb1ff749789f23390e1cf7af9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16818,6 +16838,21 @@ PrefabInstance:
     - target: {fileID: 1783161727549983204, guid: 50a0b9ecdf1174412a55a347c2da4453,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2790607644637012774, guid: 50a0b9ecdf1174412a55a347c2da4453,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 17831345}
+    - target: {fileID: 2790607644637012774, guid: 50a0b9ecdf1174412a55a347c2da4453,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 461395105}
+    - target: {fileID: 2790607644637012774, guid: 50a0b9ecdf1174412a55a347c2da4453,
+        type: 3}
+      propertyPath: isDebug
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4334557775686879250, guid: 50a0b9ecdf1174412a55a347c2da4453,
@@ -21260,6 +21295,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 703234282949685949, guid: 612692fbb1ff749789f23390e1cf7af9,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 17831345}
+    - target: {fileID: 703234282949685949, guid: 612692fbb1ff749789f23390e1cf7af9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 461395105}
     - target: {fileID: 2855245023619691894, guid: 612692fbb1ff749789f23390e1cf7af9,
         type: 3}
       propertyPath: m_RootOrder
@@ -21409,6 +21454,7 @@ MonoBehaviour:
   cam: {fileID: 17831345}
   map: {fileID: 461395105}
   moveTarget: {fileID: 1443906039}
+  isDebug: 0
 --- !u!195 &2011373694
 NavMeshAgent:
   m_ObjectHideFlags: 0
