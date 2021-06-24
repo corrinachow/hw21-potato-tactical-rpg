@@ -37,7 +37,7 @@ public class Warrior : Character
     }
 
     public override void ReceiveBuff(Buff buff){
-
+        
     }
 
     public override void SpecialAttack(){

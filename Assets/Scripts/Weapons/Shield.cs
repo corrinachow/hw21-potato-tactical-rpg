@@ -41,8 +41,6 @@ public class Shield : Weapon
     }
 
     private void OpenShield(){
-        animator.SetTrigger("ShootMagicArrow");
-
         animator.SetBool("isShieldUp", true);
         Debug.Log("Shield Open!!");
     }
