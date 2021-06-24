@@ -76,17 +76,18 @@ public class BlackMage : Character
        var projectile = weapon.GetComponent<Projectile>();
         projectile.Shoot(target);
 
+        // TODO: Figure out paralyze stat and skip turn for other target character
         Boolean isParalyzed = UnityEngine.Random.value <= 0.25;
 
           if (isParalyzed) {
-            Buff slowDebuff =  new Buff{
+            Buff paralyzeDebuff =  new Buff{
             Strength = 0,
             Magic = 0,
             Health = 0,
             Speed = -25,
         };
 
-        target.SendMessage("ReceiveBuff", slowDebuff);
+        target.SendMessage("ReceiveBuff", paralyzeDebuff);
         }
     }
     
@@ -109,28 +110,28 @@ public class BlackMage : Character
             new CharacterAction
             {
                 ActionName = "Magic Missile",
-                ActionIcon = null,
+                ActionIcon = GlobalResources.BlackMageMagicMissileSprite,
                 Targets = Array.Empty<GameTarget>(),
                 OnInvoke = this.MagicMissile,
             },
             new CharacterAction
             {
                 ActionName = "Fire",
-                ActionIcon = null,
+                ActionIcon = GlobalResources.BlackMageFireAttackSprite,
                 Targets = Array.Empty<GameTarget>(),
                 OnInvoke = this.Fire,
             },
             new CharacterAction
             {
                 ActionName = "Lightening",
-                ActionIcon = null,
+                ActionIcon = GlobalResources.BlackMageLightningAttackSprite,
                 Targets = Array.Empty<GameTarget>(),
                 OnInvoke = this.Lightening,
             },
             new CharacterAction
             {
                 ActionName = "Ice",
-                ActionIcon = null,
+                ActionIcon = GlobalResources.BlackMageIceAttackSprite,
                 Targets = Array.Empty<GameTarget>(),
                 OnInvoke = this.Ice,
             }
