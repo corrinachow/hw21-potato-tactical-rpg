@@ -37,15 +37,27 @@ public class BlackMage : Character
         }
     }
 
-    public override void SpecialAttack(){
-
-    }
-
     public override void DealMagicDamage(){
 
     }
 
     public virtual void Move(){
+
+    }
+
+    public void MagicMissile(string target){
+
+    }
+    
+    public void Ice(string target){
+
+    }
+    
+    public void Lightening(string target){
+
+    }
+    
+    public void Fire(string target){
 
     }
 

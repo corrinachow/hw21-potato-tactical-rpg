@@ -58,10 +58,6 @@ public abstract class Character : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    public virtual void SpecialAttack(){
-        throw new NotImplementedException();
-    }
-
     public virtual void Death(){
         Destroy(gameObject);
     }

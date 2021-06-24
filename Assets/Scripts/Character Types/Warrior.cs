@@ -46,10 +46,6 @@ public class Warrior : Character
         
     }
 
-    public override void SpecialAttack(){
-
-    }
-
     public override void DealMagicDamage(){
 
     }
@@ -57,11 +53,22 @@ public class Warrior : Character
     public virtual void Move(){
 
     }
-
-    public void Charge(){
+    
+    public void Sword(){
 
     }
 
+    public void Charge(string target){
+
+    }
+
+    public void Shield(){
+
+    }
+
+    public void AxeThrow(string target){
+
+    }
     public override void Death(){
         // Destroy(gameObject);
     }

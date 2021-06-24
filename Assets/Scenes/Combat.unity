@@ -16301,6 +16301,11 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1869315837
       objectReference: {fileID: 0}
+    - target: {fileID: 5143035622930948343, guid: 50a0b9ecdf1174412a55a347c2da4453,
+        type: 3}
+      propertyPath: m_TagString
+      value: BlueTeam
+      objectReference: {fileID: 0}
     - target: {fileID: 7690505123981807143, guid: 50a0b9ecdf1174412a55a347c2da4453,
         type: 3}
       propertyPath: m_Name
@@ -16349,6 +16354,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 22.537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2654535763549677951, guid: 612692fbb1ff749789f23390e1cf7af9,
+        type: 3}
+      propertyPath: m_TagString
+      value: RedTeam
       objectReference: {fileID: 0}
     - target: {fileID: 2855245023619691894, guid: 612692fbb1ff749789f23390e1cf7af9,
         type: 3}
@@ -16463,6 +16473,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533085143955566967, guid: 4120fe2ed9a29428893de774dc6fd413,
+        type: 3}
+      propertyPath: m_TagString
+      value: BlueTeam
       objectReference: {fileID: 0}
     - target: {fileID: 7545499513726891486, guid: 4120fe2ed9a29428893de774dc6fd413,
         type: 3}
@@ -16961,6 +16976,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayerID
       value: -1869315837
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143035622930948343, guid: 50a0b9ecdf1174412a55a347c2da4453,
+        type: 3}
+      propertyPath: m_TagString
+      value: RedTeam
       objectReference: {fileID: 0}
     - target: {fileID: 6373563032308925497, guid: 50a0b9ecdf1174412a55a347c2da4453,
         type: 3}
@@ -21267,6 +21287,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7533085143955566967, guid: 4120fe2ed9a29428893de774dc6fd413,
+        type: 3}
+      propertyPath: m_TagString
+      value: RedTeam
+      objectReference: {fileID: 0}
     - target: {fileID: 7545499513726891486, guid: 4120fe2ed9a29428893de774dc6fd413,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21416,6 +21441,11 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 461395105}
+    - target: {fileID: 2654535763549677951, guid: 612692fbb1ff749789f23390e1cf7af9,
+        type: 3}
+      propertyPath: m_TagString
+      value: BlueTeam
+      objectReference: {fileID: 0}
     - target: {fileID: 2855245023619691894, guid: 612692fbb1ff749789f23390e1cf7af9,
         type: 3}
       propertyPath: m_RootOrder

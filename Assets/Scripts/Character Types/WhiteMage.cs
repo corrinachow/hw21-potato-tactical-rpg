@@ -37,11 +37,23 @@ public class WhiteMage : Character
         }
     }
 
-    public override void SpecialAttack(){
+    public override void DealMagicDamage(){
 
     }
 
-    public override void DealMagicDamage(){
+    public void MagicArrow(string target){
+
+    }
+
+    public void Heal(string target){
+
+    }
+
+    public void Barrier(string target){
+
+    }
+
+    public void Manaward(string target){
 
     }
 
