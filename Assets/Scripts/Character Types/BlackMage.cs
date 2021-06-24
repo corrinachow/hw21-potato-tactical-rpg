@@ -48,17 +48,46 @@ public class BlackMage : Character
 
     public void MagicMissile(GameObject target, int turn) 
     {
-
+       var projectile = weapon.GetComponent<Projectile>();
+        projectile.Shoot(target);
     }
     
     public void Ice(GameObject target, int turn)
     {
+       var projectile = weapon.GetComponent<Projectile>();
+        projectile.Shoot(target);
 
+        Boolean isSlowed = UnityEngine.Random.value <= 0.25;
+
+        if (isSlowed) {
+            Buff slowDebuff =  new Buff{
+            Strength = 0,
+            Magic = 0,
+            Health = 0,
+            Speed = -5,
+        };
+
+        target.SendMessage("ReceiveBuff", slowDebuff);
+        }
     }
     
     public void Lightening(GameObject target, int turn)
     {
+       var projectile = weapon.GetComponent<Projectile>();
+        projectile.Shoot(target);
 
+        Boolean isParalyzed = UnityEngine.Random.value <= 0.25;
+
+          if (isParalyzed) {
+            Buff slowDebuff =  new Buff{
+            Strength = 0,
+            Magic = 0,
+            Health = 0,
+            Speed = -25,
+        };
+
+        target.SendMessage("ReceiveBuff", slowDebuff);
+        }
     }
     
     public void Fire(GameObject target, int turn)
@@ -82,7 +111,28 @@ public class BlackMage : Character
                 ActionName = "Magic Missile",
                 ActionIcon = null,
                 Targets = Array.Empty<GameTarget>(),
-                OnInvoke = MagicMissile,
+                OnInvoke = this.MagicMissile,
+            },
+            new CharacterAction
+            {
+                ActionName = "Fire",
+                ActionIcon = null,
+                Targets = Array.Empty<GameTarget>(),
+                OnInvoke = this.Fire,
+            },
+            new CharacterAction
+            {
+                ActionName = "Lightening",
+                ActionIcon = null,
+                Targets = Array.Empty<GameTarget>(),
+                OnInvoke = this.Lightening,
+            },
+            new CharacterAction
+            {
+                ActionName = "Ice",
+                ActionIcon = null,
+                Targets = Array.Empty<GameTarget>(),
+                OnInvoke = this.Ice,
             }
         };
     }
