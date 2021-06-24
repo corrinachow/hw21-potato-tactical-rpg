@@ -8,42 +8,119 @@ public class Player : MonoBehaviour
 {
     public Camera cam;
 
-    public NavMeshAgent agent;
+    private NavMeshAgent agent;
+
+    private LineRenderer myLineRenderer;
 
     public Tilemap map;
+
+    public GameObject moveTarget;
 
     // private BoxCollider2D boxCollider;
     private Vector3 lastPosition = new Vector3(0, 0, 0);
 
+    private bool clicked = false;
+
 
     private void Start()
     {
+        myLineRenderer = GetComponent<LineRenderer>();
+        agent = GetComponent<NavMeshAgent>();
+
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        // Line rendere for destination line
+        myLineRenderer.positionCount = 0;
+    }
+
+    /* 
+        Moves to the set destination, invoke TargetPoint with the mousePosition prior to this
+    */
+    public void MoveToDestination()
+    {
+        moveTarget.transform.SetParent(null);
+        agent.isStopped = false;
+    }
+
+    /*
+        Draws line and point to the desired destination, confirm by invoking MoveToDestination()
+    */
+    public void TargetPoint(Vector2 mousePosition)
+    {
+        moveTarget.SetActive(true);
+        moveTarget.transform.position = mousePosition;
+        agent.isStopped = true;
+        agent.SetDestination(mousePosition);
+    }
+
+    /*
+    Example of how to check of the point exists.
+    */
+    private void ClickToMove()
+    {
+        if (!clicked)
+        {
+            Vector2 mousePosition = Input.mousePosition;
+            mousePosition = cam.ScreenToWorldPoint(mousePosition);
+            Vector3Int gridPosition = map.WorldToCell(mousePosition);
+            if (map.HasTile(gridPosition))
+            {
+                TargetPoint(mousePosition);
+            }
+        }
+        else
+        {
+            MoveToDestination();
+        }
+        clicked = !clicked;
     }
 
     private void FixedUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector2 mousePosition = Input.mousePosition;
-            mousePosition = cam.ScreenToWorldPoint(mousePosition);
-            Vector3Int gridPosition = map.WorldToCell(mousePosition);
+            ClickToMove();
+        }
 
-            if (map.HasTile(gridPosition))
-            {
-                agent.SetDestination(mousePosition);
-            }
+        if (Vector3.Distance(agent.destination, transform.position) <= agent.stoppingDistance)
+        {
+            // If the agent is moving
+            moveTarget.SetActive(false);
+            myLineRenderer.positionCount = 0;
+        }
+        else if (agent.hasPath)
+        {
+            // If the agent has a path
+            DrawPath();
         }
 
         Vector3 moveDelta = transform.position - lastPosition;
         lastPosition = transform.position;
 
-        // // Swap sprite direction when going left or right
+        // Swap sprite direction when going left or right
         if (moveDelta.x > 0)
             transform.localScale = Vector3.one;
         else if (moveDelta.x < 0)
             transform.localScale = new Vector3(-1, 1, 0);
+    }
 
+    void DrawPath()
+    {
+        // Draws the path that the player will take to reach it's destination
+        myLineRenderer.positionCount = agent.path.corners.Length;
+        myLineRenderer.SetPosition(0, transform.position);
+
+        // Straight line
+        if (agent.path.corners.Length < 2)
+        {
+            return;
+        }
+
+        for (int i = 1; i < agent.path.corners.Length; i++)
+        {
+            Vector3 pointPosition = new Vector3(agent.path.corners[i].x, agent.path.corners[i].y, agent.path.corners[i].z);
+            myLineRenderer.SetPosition(i, pointPosition);
+        }
     }
 }
