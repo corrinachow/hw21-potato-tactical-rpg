@@ -85,7 +85,7 @@ public abstract class Character : MonoBehaviour
         (string enemyTag, string enemyLayer) enemyTuple = gameObject.transform.CompareTag("RedTeam") ? ("BlueTeam", "BlueTarget") : ("RedTeam", "RedTarget");
         var allEnemyTargets = GameObject.FindGameObjectsWithTag(enemyTuple.enemyTag);
 
-        // check if each target is in site
+        // check if each target is in sight
         var filtered = new List<GameObject>();
         foreach (var target in allEnemyTargets)
         {

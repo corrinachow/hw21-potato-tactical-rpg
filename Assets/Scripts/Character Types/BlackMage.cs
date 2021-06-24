@@ -45,28 +45,43 @@ public class BlackMage : Character
 
     }
 
-    public void MagicMissile(string target){
+    public void MagicMissile(GameObject target)
+    {
 
     }
     
-    public void Ice(string target){
+    public void Ice(GameObject target)
+    {
 
     }
     
-    public void Lightening(string target){
+    public void Lightening(GameObject target)
+    {
 
     }
     
     public void Fire(GameObject target)
     {
-        var wand = weapon.GetComponent<Projectile>();
-        wand.Shoot(target);
+        var projectile = weapon.GetComponent<Projectile>();
+        projectile.Shoot(target);
     }
 
     public override CharacterAction[] GetActions()
     {
         var targets = GetAvailableTargets();
 
-        return Array.Empty<CharacterAction>();
+        if (targets.Length == 0)
+            return Array.Empty<CharacterAction>();
+
+        return new CharacterAction[]
+        {
+            new CharacterAction
+            {
+                ActionName = "Magic Missile",
+                ActionIcon = null,
+                Targets = Array.Empty<GameTarget>(),
+                OnInvoke = MagicMissile,
+            }
+        };
     }
 }
