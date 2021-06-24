@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     public bool isDebug = false;
 
+    public bool isFacingLeftAtStart = false;
+
     // private BoxCollider2D boxCollider;
     private Vector3 lastPosition = new Vector3(0, 0, 0);
 
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour
         myLineRenderer.startWidth = 0.05f;
         myLineRenderer.endWidth = 0.05f;
         myLineRenderer.positionCount = 0;
+
+        lastPosition = transform.position;
     }
 
     /* 
@@ -101,6 +105,11 @@ public class Player : MonoBehaviour
 
         Vector3 moveDelta = transform.position - lastPosition;
         lastPosition = transform.position;
+
+        if (isFacingLeftAtStart)
+        {
+            moveDelta.x *= -1;
+        }
 
         // Swap sprite direction when going left or right
         if (moveDelta.x > 0)

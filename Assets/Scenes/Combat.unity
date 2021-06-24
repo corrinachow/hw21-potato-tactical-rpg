@@ -16226,6 +16226,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1420241309703977959, guid: 50a0b9ecdf1174412a55a347c2da4453,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1783161727549983204, guid: 50a0b9ecdf1174412a55a347c2da4453,
         type: 3}
       propertyPath: m_RootOrder
@@ -16345,6 +16350,11 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 461395105}
+    - target: {fileID: 703234282949685949, guid: 612692fbb1ff749789f23390e1cf7af9,
+        type: 3}
+      propertyPath: isFacingLeftAtStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2197964682862853631, guid: 612692fbb1ff749789f23390e1cf7af9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16359,6 +16369,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: RedTeam
+    - target: {fileID: 2447764436923465544, guid: 612692fbb1ff749789f23390e1cf7af9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2855245023619691894, guid: 612692fbb1ff749789f23390e1cf7af9,
         type: 3}
@@ -16897,6 +16911,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1420241309703977959, guid: 50a0b9ecdf1174412a55a347c2da4453,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1783161727549983204, guid: 50a0b9ecdf1174412a55a347c2da4453,
         type: 3}
       propertyPath: m_RootOrder
@@ -16966,6 +16985,21 @@ PrefabInstance:
         type: 3}
       propertyPath: isDebug
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2790607644637012774, guid: 50a0b9ecdf1174412a55a347c2da4453,
+        type: 3}
+      propertyPath: invertDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2790607644637012774, guid: 50a0b9ecdf1174412a55a347c2da4453,
+        type: 3}
+      propertyPath: directionNegation
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2790607644637012774, guid: 50a0b9ecdf1174412a55a347c2da4453,
+        type: 3}
+      propertyPath: isFacingLeftAtStart
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4334557775686879250, guid: 50a0b9ecdf1174412a55a347c2da4453,
         type: 3}
@@ -21123,6 +21157,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5983123218542603305, guid: 55b8ba8f945c941bc9a9c3b85dc708bc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.23999023
+      objectReference: {fileID: 0}
     - target: {fileID: 5983123220071442912, guid: 55b8ba8f945c941bc9a9c3b85dc708bc,
         type: 3}
       propertyPath: m_Name
@@ -21445,6 +21484,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: BlueTeam
+    - target: {fileID: 2447764436923465544, guid: 612692fbb1ff749789f23390e1cf7af9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2855245023619691894, guid: 612692fbb1ff749789f23390e1cf7af9,
         type: 3}
@@ -21587,7 +21630,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011373691}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 688f893b4adee45ca9eaa4f08eb54238, type: 3}
   m_Name: 
@@ -21596,6 +21639,7 @@ MonoBehaviour:
   map: {fileID: 461395105}
   moveTarget: {fileID: 1443906039}
   isDebug: 0
+  isFacingLeftAtStart: 1
 --- !u!195 &2011373694
 NavMeshAgent:
   m_ObjectHideFlags: 0

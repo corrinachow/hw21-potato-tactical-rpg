@@ -356,6 +356,7 @@ MonoBehaviour:
   map: {fileID: 0}
   moveTarget: {fileID: 3277663424118889220}
   isDebug: 0
+  isFacingLeftAtStart: 0
 --- !u!195 &8205322849490529257
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -370,7 +371,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -689,6 +690,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183362630426017358, guid: ef82f31f90fb2451ea2bd2a318a2603e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8298117455910831489, guid: ef82f31f90fb2451ea2bd2a318a2603e,
         type: 3}
