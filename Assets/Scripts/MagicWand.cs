@@ -10,33 +10,22 @@ public class MagicWand : MonoBehaviour
     public string targetTag = "RedTeam";
     public string targetLayer = "RedTarget";
 
-    void Update()
+    private Vector3 Direction(GameObject target)
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
-        }
+        return (target.transform.position - firePoint.position).normalized;
     }
 
-    void Shoot ()
+    public bool IsInSight(GameObject target)
     {
-        // A layer mask to get only Blocking elements and targetTag elements
         var layerMask = LayerMask.GetMask(targetLayer, "Blocking");
+        var direction = Direction(target);
+        var hit = Physics2D.Raycast(firePoint.position, direction * 1000, 1000, layerMask);
+        return hit.transform.CompareTag(targetTag);
+    }
 
-        // Get all the targets and send a raycast to each to see if
-        // they are in line-of-sight. If they are, shoot a real fireball
-        var targets = GameObject.FindGameObjectsWithTag(targetTag);
-
-        foreach (var target in targets)
-        {
-            var direction = (target.transform.position - firePoint.position).normalized;
-            var hit = Physics2D.Raycast(firePoint.position, direction * 1000, 1000, layerMask);
-
-            if (hit.transform.CompareTag(targetTag))
-            {
-                GameObject go = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity) as GameObject;
-                go.SendMessage("Fire", direction);
-            }
-        }
+    public void Shoot (GameObject target)
+    {
+        GameObject go = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity) as GameObject;
+        go.SendMessage("Fire", Direction(target));
     }
 }

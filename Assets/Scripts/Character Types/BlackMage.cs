@@ -9,6 +9,8 @@ public class BlackMage : Character
 
     public override Team Team => team;
 
+    public GameObject weapon;
+
     public override int TotalHealth { get; } = 75;
     
     public override int CurrentHealth{get; protected set;} = 75;
@@ -57,8 +59,13 @@ public class BlackMage : Character
 
     }
     
-    public void Fire(string target){
-
+    public void Fire(GameObject target)
+    {
+        var wand = weapon.GetComponent<MagicWand>();
+        if (wand.IsInSight(target))
+        {
+            wand.Shoot(target);
+        }
     }
 
     public override void Death(){
