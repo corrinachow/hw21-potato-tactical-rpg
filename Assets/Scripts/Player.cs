@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
         agent.updateUpAxis = false;
 
         // Line rendere for destination line
+        myLineRenderer.startWidth = 0.05f;
+        myLineRenderer.endWidth = 0.05f;
         myLineRenderer.positionCount = 0;
     }
 
