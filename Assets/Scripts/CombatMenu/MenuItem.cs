@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,10 +16,10 @@ public class MenuItem
 
     public Team Team { get; set; }
 
-    public Button.ButtonClickedEvent OnClick = new Button.ButtonClickedEvent();
+    public Action OnClick;
 
     public void InvokeClick()
     {
-        this.OnClick.Invoke();
+        OnClick?.Invoke();
     }
 }

@@ -155,15 +155,14 @@ public class GameManager : MonoBehaviour
                     Disabled = !mainAction.IsAvailable,
                     Hidden = false,
                     Icon = mainAction.ActionIcon,
+                    OnClick = () =>
+                    {
+                        Debug.Log($"Main action invoked: {mainAction.ActionName}");
+
+                        activeAction = mainAction;
+                        RefreshCombatMenu();
+                    }
                 };
-                
-                menuItem.OnClick.AddListener(() =>
-                {
-                    menuItem.OnClick.RemoveAllListeners();
-                    activeAction = mainAction;
-                    
-                    RefreshCombatMenu();
-                });
 
                 combatMenuController.MainItem = menuItem;
             }
@@ -177,15 +176,14 @@ public class GameManager : MonoBehaviour
                     Disabled = !action.IsAvailable,
                     Hidden = false,
                     Icon = action.ActionIcon,
+                    OnClick = () =>
+                    {
+                        Debug.Log("Invoking secondary action: " + action.ActionName);
+                        
+                        activeAction = action;
+                        RefreshCombatMenu();
+                    }
                 };
-                
-                menuItem.OnClick.AddListener(() =>
-                {
-                    menuItem.OnClick.RemoveAllListeners();
-                    activeAction = mainAction;
-                    
-                    RefreshCombatMenu();
-                });
 
                 return menuItem;
             }).ToArray();
@@ -198,16 +196,15 @@ public class GameManager : MonoBehaviour
                 Label = $"Cancel {activeAction.ActionName}",
                 Disabled = false,
                 Hidden = false,
-                Icon = GlobalResources.CancelSprite
+                Icon = GlobalResources.CancelSprite,
+                OnClick = () =>
+                {
+                    Debug.Log($"Cancelling active action ({activeAction.ActionName})");
+                    
+                    activeAction = null;
+                    RefreshCombatMenu();
+                }
             };
-            cancelMenuItem.OnClick.AddListener(() =>
-            {
-                cancelMenuItem.OnClick.RemoveAllListeners();
-
-                activeAction = null;
-                RefreshCombatMenu();
-            });
-
             combatMenuController.MainItem = cancelMenuItem;
 
             combatMenuController.SecondaryActions = activeAction.Targets.Select(target =>
@@ -218,17 +215,15 @@ public class GameManager : MonoBehaviour
                     Label = $"Target {target.TargetName}",
                     Disabled = !target.IsAvailable,
                     Hidden = false,
-                    Icon = target.GameObject.GetComponent<Character>().GetSprite()
+                    Icon = target.GameObject.GetComponent<Character>().GetSprite(),
+                    OnClick = () =>
+                    {
+                        Debug.Log($"Picked target: {target.TargetName}");
+                        
+                        activeAction.OnInvoke(target.GameObject, roundIndex);
+                        EndAction();
+                    }
                 };
-                
-                menuItem.OnClick.AddListener(() =>
-                {
-                    menuItem.OnClick.RemoveAllListeners();
-
-                    activeAction.OnInvoke(target.GameObject, roundIndex);
-                    
-                    EndAction();
-                });
 
                 return menuItem;
             }).ToArray();

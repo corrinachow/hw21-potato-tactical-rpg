@@ -16,6 +16,10 @@ public class Player : MonoBehaviour
 
     public GameObject moveTarget;
 
+    public GameObject maxMoveCircle;
+
+    public int maxMoveDistance = 5;
+
     public bool isDebug = false;
 
     public bool isFacingLeftAtStart = false;
@@ -42,11 +46,17 @@ public class Player : MonoBehaviour
         lastPosition = transform.position;
     }
 
+    public void DisplayMoveCircle()
+    {
+        maxMoveCircle.SetActive(true);
+    }
+
     /* 
         Moves to the set destination, invoke TargetPoint with the mousePosition prior to this
     */
     public void MoveToDestination()
     {
+        maxMoveCircle.SetActive(false);
         moveTarget.transform.SetParent(null);
         agent.isStopped = false;
     }
@@ -69,12 +79,21 @@ public class Player : MonoBehaviour
     {
         if (!clicked)
         {
+            DisplayMoveCircle();
             Vector2 mousePosition = Input.mousePosition;
             mousePosition = cam.ScreenToWorldPoint(mousePosition);
-            Vector3Int gridPosition = map.WorldToCell(mousePosition);
-            if (map.HasTile(gridPosition))
+
+            if (Vector2.Distance(transform.position, mousePosition) <= maxMoveDistance)
             {
-                TargetPoint(mousePosition);
+                Vector3Int gridPosition = map.WorldToCell(mousePosition);
+                if (map.HasTile(gridPosition))
+                {
+                    TargetPoint(mousePosition);
+                }
+            }
+            else
+            {
+                Debug.Log("That point is too far!");
             }
         }
         else

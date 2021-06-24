@@ -4,8 +4,7 @@ using UnityEngine;
 
 public struct Buff
 {
-    public bool isShieldOpen;
-    public bool hasManaward;
-    public bool hasBarrier;
+    public int physical;
+    public int magic;
     public int health;
 }

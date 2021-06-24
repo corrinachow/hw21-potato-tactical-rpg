@@ -5,9 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fighter
-  - PracticeTarget
-  - RedTeam
   - BlueTeam
+  - RedTeam
   layers:
   - Default
   - TransparentFX
@@ -17,7 +16,7 @@ TagManager:
   - UI
   - Blocking
   - Actor
-  - PracticeTarget
+  - 
   - 
   - 
   - 
@@ -45,9 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Wall
-    uniqueID: 2413537931
-    locked: 0
   - name: Floor
     uniqueID: 1
     locked: 0
@@ -63,6 +59,9 @@ TagManager:
   - name: Weapon
     uniqueID: 2247450189
     locked: 0
-  - name: PracticeTarget
-    uniqueID: 1322627537
+  - name: Wall
+    uniqueID: 2413537931
+    locked: 0
+  - name: UI
+    uniqueID: 635872007
     locked: 0

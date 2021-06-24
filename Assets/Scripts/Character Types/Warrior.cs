@@ -21,28 +21,17 @@ public class Warrior : Character
     public override int Defense { get; protected set; } = 10; 
     public override int MagicDefense { get; protected set; } = 5;
     
-    protected bool isShieldOpen{get; set;} = false;
     protected override List<Spell> AppliedSpells { get; set; }
     protected override Vector2 Position { get; set; }
 
 
     public override void ReceiveDamage(Damage damage){
         CurrentHealth -= (int)(damage.damageAmount * ((100f - Defense)/100));
-        if (CurrentHealth <= 0){
-            CurrentHealth = 0;
-            Death();
-        }
-
-        Debug.Log(" Damage CurrentHealth: "+ CurrentHealth);
+        base.CheckIfDead();
     }
     public override void ReceiveMagicDamage(Damage damage){
         CurrentHealth -= damage.damageAmount * ((100 - MagicDefense)/100);
-        if (CurrentHealth <= 0){
-            CurrentHealth = 0;
-            Death();
-        }
-
-        Debug.Log("Magic CurrentHealth: "+ CurrentHealth);
+        base.CheckIfDead();
     }
 
     public override void ReceiveBuff(Buff buff)
@@ -78,11 +67,6 @@ public class Warrior : Character
     public void AxeThrow(GameObject target, int turn)
     {
 
-    }
-    
-    public override void Death()
-    {
-        // Destroy(gameObject);
     }
 
     public override CharacterAction[] GetActions(int roundIndex)

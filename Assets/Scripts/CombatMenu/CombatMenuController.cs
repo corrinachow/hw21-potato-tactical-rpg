@@ -17,6 +17,8 @@ public class CombatMenuController : MonoBehaviour
     public int secondaryActionsCount = 3;
     public int cameraActionsCount = 2;
 
+    public bool IsDebug = false;
+
     private ActionButton mainActionButton;
     private ActionButton[] secondaryActionButtons;
     private ActionButton[] cameraActionButtons;
@@ -70,6 +72,54 @@ public class CombatMenuController : MonoBehaviour
 
     private void Start()
     {
+        if (IsDebug)
+        {
+            MainItem = new MenuItem
+            {
+                Name = "WarriorAttack",
+                Label = "Warrior attack",
+                // Icon = GameObject.Find("Sword").GetComponent<SpriteRenderer>().sprite,
+                Disabled = false,
+                Hidden = false,
+                Team = Team.Team1,
+                OnClick = () => Debug.Log("Warrior attacking")
+            };
+
+            SecondaryActions = new[]
+            {
+                new MenuItem
+                {
+                    Name = "WarriorCharge",
+                    Label = "Warrior Charge",
+                    // Icon = GameObject.Find("Charge").GetComponent<SpriteRenderer>().sprite,
+                    Disabled = false,
+                    Hidden = false,
+                    Team = Team.Team2,
+                    OnClick = () => Debug.Log("Warrior charge")
+                },
+                new MenuItem
+                {
+                    Name = "WarriorShield",
+                    Label = "Warrior Shield",
+                    // Icon = GameObject.Find("Shield").GetComponent<SpriteRenderer>().sprite,
+                    Disabled = false,
+                    Hidden = true,
+                    Team = Team.Team1,
+                    OnClick = () => Debug.Log("Warrior shield (hidden)"),
+                },
+                new MenuItem
+                {
+                    Name = "WarriorThrow",
+                    Label = "Warrior throw",
+                    // Icon = GameObject.Find("Axe").GetComponent<SpriteRenderer>().sprite,
+                    Disabled = true,
+                    Hidden = false,
+                    Team = Team.Team1,
+                    OnClick = () => Debug.Log("Warrior axe throw (disabled)")
+                }
+            };
+        }
+        
         mainActionButton = CreateMainActionButton();
         secondaryActionButtons = CreateSecondaryActionButtons(secondaryActionsCount);
         cameraActionButtons = CreateCameraActionButtons(cameraActionsCount);
@@ -170,7 +220,7 @@ public class CombatMenuController : MonoBehaviour
                 selectedColor = teamColor * hoverEffect,
             };
 
-            button.onClick.AddListener(() => menuItem.InvokeClick());
+            button.onClick.AddListener(menuItem.InvokeClick);
 
             icon.sprite = menuItem.Icon;
             icon.preserveAspect = true;

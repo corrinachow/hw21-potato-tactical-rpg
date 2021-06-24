@@ -10,6 +10,13 @@ public class WhiteMage : Character
     public override int TotalHealth { get; } = 75;
     public override string CharacterName => "White Mage";
     
+    public GameObject[] Enemies {get; set;}
+    public GameObject[] Teammates {get; set;}
+
+    public Sprite playerSprite {get; set;}
+
+    public int LastTurnSpecialAttack {get; set;} = 0;
+
     public override int CurrentHealth{get; protected set;} = 75;
     public override int Magic { get; protected set; } = 15;
     public override int Strength { get; protected set; } = 5;
@@ -21,21 +28,24 @@ public class WhiteMage : Character
     protected override List<Spell> AppliedSpells { get; set; }
     protected override Vector2 Position { get; set; }
 
-
+    public void Start(){
+        if(team == Team.Team1){
+            Enemies = GameObject.FindGameObjectsWithTag("RedTeam");
+            Teammates = GameObject.FindGameObjectsWithTag("BlueTeam");
+        }
+        else{
+            Enemies = GameObject.FindGameObjectsWithTag("BlueTeam");
+            Teammates = GameObject.FindGameObjectsWithTag("RedTeam");
+        }
+    }
 
     public override void ReceiveDamage(Damage damage){
         CurrentHealth -= damage.damageAmount * ((100 - Defense)/100);
-        if (CurrentHealth <= 0){
-            CurrentHealth = 0;
-            Death();
-        }   
+        base.CheckIfDead();
     }
     public override void ReceiveMagicDamage(Damage damage){
         CurrentHealth -= damage.damageAmount * ((100 - MagicDefense)/100);
-        if (CurrentHealth <= 0){
-            CurrentHealth = 0;
-            Death();
-        }
+        base.CheckIfDead();
     }
 
     public override void DealMagicDamage(){
@@ -49,31 +59,45 @@ public class WhiteMage : Character
 
     public void Heal(GameObject target, int turn)
     {
-
+        Buff healBuff = new Buff
+        {
+            physical = 0,
+            magic = 0,
+            health = (int) (25 * UnityEngine.Random.Range(1, 1.125f) * (2 + (Magic * (Magic / 256)))),
+        };
     }
 
     public void Barrier(GameObject target, int turn)
     {
+        LastTurnSpecialAttack = turn;
 
+        Buff healBuff =  new Buff{
+            physical = 25,
+            magic = 0,
+            health = 0,
+        };
+
+        target.SendMessage("ReceiveBuff", healBuff);
     }
 
-    public void Manaward(GameObject target, int turn)
-    {
+    public void Manaward(GameObject target, int turn){
+        LastTurnSpecialAttack = turn;
 
+        Buff healBuff =  new Buff{
+            physical = 0,
+            magic = 25,
+            health = 0,
+        };
+
+        target.SendMessage("ReceiveBuff", healBuff);
     }
 
-    public virtual void Move()
-    {
+    public virtual void Move(){
 
-    }
-
-    public override void Death(){
-        // Destroy(gameObject);
     }
     
     public override CharacterAction[] GetActions(int roundIndex)
     {
-        // TODO: To be implemented
         return Array.Empty<CharacterAction>();
     }
 }

@@ -72,7 +72,17 @@ public abstract class Character : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    public virtual void Death(){
+    public virtual void CheckIfDead()
+    {
+        if (CurrentHealth <= 0)
+        {
+            CurrentHealth = 0;
+            Death();
+        }
+    }
+
+    public virtual void Death()
+    {
         Destroy(gameObject);
     }
 
@@ -82,6 +92,37 @@ public abstract class Character : MonoBehaviour
         Assert.IsNotNull(sprite, "Could not find the character Sprite");
 
         return sprite;
+    }
+
+    public GameObject[] GetAvailableTargets()
+    {
+        (string enemyTag, string enemyLayer) enemyTuple = gameObject.transform.CompareTag("RedTeam") ? ("BlueTeam", "BlueTarget") : ("RedTeam", "RedTarget");
+        var allEnemyTargets = GameObject.FindGameObjectsWithTag(enemyTuple.enemyTag);
+
+        // check if each target is in site
+        var filtered = new List<GameObject>();
+        foreach (var target in allEnemyTargets)
+        {
+            if (IsInSight(target, enemyTuple.enemyLayer, enemyTuple.enemyTag, gameObject.transform.position))
+            {
+                filtered.Add(target);
+            }
+        }
+
+        return filtered.ToArray();
+    }
+
+    private bool IsInSight(GameObject target, string targetLayer, string targetTag, Vector3 startPosition)
+    {
+        var layerMask = LayerMask.GetMask(targetLayer, "Blocking");
+        var direction = Direction(target, startPosition);
+        var hit = Physics2D.Raycast(startPosition, direction * 1000, 1000, layerMask);
+        return hit.transform.CompareTag(targetTag);
+    }
+
+    private Vector3 Direction(GameObject target, Vector3 startPosition)
+    {
+        return (target.transform.position - startPosition).normalized;
     }
 
     public abstract CharacterAction[] GetActions(int roundIndex);
