@@ -4,7 +4,7 @@ using UnityEngine;
 
 public struct Buff
 {
-    public int physical;
-    public int magic;
-    public int health;
+    public int Strength;
+    public int Magic;
+    public int Health;
 }

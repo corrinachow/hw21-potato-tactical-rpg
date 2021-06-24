@@ -22,9 +22,9 @@ public class Shield : Weapon
         if(coll.tag == "Fighter"){
  
             Buff buff = new Buff {
-                physical = 50,
-                magic = 0,
-                health = 0,
+                Strength = 50,
+                Magic = 0,
+                Health = 0,
             };
 
             coll.SendMessage("ReceiveBuff", buff);

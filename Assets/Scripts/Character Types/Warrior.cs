@@ -31,10 +31,6 @@ public class Warrior : Character
         base.CheckIfDead();
     }
 
-    public override void ReceiveBuff(Buff buff){
-        
-    }
-
     public override void DealMagicDamage(){
 
     }

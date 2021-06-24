@@ -45,7 +45,9 @@ public abstract class Character : MonoBehaviour
     }
     
     public virtual void ReceiveBuff(Buff buff){
-        throw new NotImplementedException();
+        Magic += buff.Magic;
+        Strength += buff.Strength;
+        CurrentHealth += buff.Health;
     }
 
     public virtual void DealDamage()

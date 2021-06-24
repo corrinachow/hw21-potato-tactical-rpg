@@ -6,6 +6,8 @@ public class WhiteMage : Character
 {
     public Team team;
 
+    public GameObject weapon;
+
     public override Team Team => team;
     public override int TotalHealth { get; } = 75;
     
@@ -52,16 +54,17 @@ public class WhiteMage : Character
     }
 
     public void MagicArrow(GameObject target, int turn){
-
+        var arrow = weapon.GetComponent<Projectile>();
+        arrow.Shoot(target);
     }
 
     public void Heal(GameObject target, int turn){
         LastTurnSpecialAttack = turn;
 
         Buff healBuff =  new Buff{
-            physical = 0,
-            magic = 0,
-            health = (int)(25*UnityEngine.Random.Range(1,1.125f)* (2+(Magic*(Magic/256)))),
+            Strength = 0,
+            Magic = 0,
+            Health = (int)(25*UnityEngine.Random.Range(1,1.125f)* (2+(Magic*(Magic/256)))),
         };
 
         target.SendMessage("ReceiveBuff", healBuff);
@@ -72,9 +75,9 @@ public class WhiteMage : Character
         LastTurnSpecialAttack = turn;
 
         Buff healBuff =  new Buff{
-            physical = 25,
-            magic = 0,
-            health = 0,
+            Strength = 25,
+            Magic = 0,
+            Health = 0,
         };
 
         target.SendMessage("ReceiveBuff", healBuff);
@@ -84,9 +87,9 @@ public class WhiteMage : Character
         LastTurnSpecialAttack = turn;
 
         Buff healBuff =  new Buff{
-            physical = 0,
-            magic = 25,
-            health = 0,
+            Strength = 0,
+            Magic = 25,
+            Health = 0,
         };
 
         target.SendMessage("ReceiveBuff", healBuff);
