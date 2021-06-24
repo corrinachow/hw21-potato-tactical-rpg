@@ -20,6 +20,8 @@ public class SmartCamera : MonoBehaviour
 
     public int cameraSpeed = 10;
 
+    public int zoomSpeed = 5;
+
     private Vector3 moveDelta;
 
     enum Modes
@@ -42,6 +44,9 @@ public class SmartCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
+            Input's are for debugging, these should be removed once the Game Manager is in
+        */
         if (Input.GetKeyDown("o"))
         {
             Debug.Log("Switching to Overview cam");
@@ -72,6 +77,8 @@ public class SmartCamera : MonoBehaviour
                 moveDelta.y * Time.deltaTime * cameraSpeed,
                 0
             );
+
+            overviewCamera.m_Lens.OrthographicSize += Input.mouseScrollDelta.y * zoomSpeed * Time.deltaTime;
         }
     }
 
