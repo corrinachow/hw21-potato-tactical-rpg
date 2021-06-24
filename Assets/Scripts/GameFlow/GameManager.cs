@@ -137,11 +137,16 @@ public class GameManager : MonoBehaviour
 
     private void RefreshCombatMenu()
     {
-        if (hideMenu)
+        if (hideMenu || activeCharacterActions == null || activeCharacterActions.Length == 0)
         {
             combatMenuController.MainItem = null;
             combatMenuController.SecondaryActions = null;
+            
+            combatMenuController.Refresh();
+            return;
         }
+
+        var activePlayer = turnOrder.Peek();
         
         if (activeAction == null)
         {
@@ -155,6 +160,7 @@ public class GameManager : MonoBehaviour
                     Disabled = !mainAction.IsAvailable,
                     Hidden = false,
                     Icon = mainAction.ActionIcon,
+                    Team = activePlayer.Team,
                     OnClick = () =>
                     {
                         Debug.Log($"Main action invoked: {mainAction.ActionName}");
@@ -176,6 +182,7 @@ public class GameManager : MonoBehaviour
                     Disabled = !action.IsAvailable,
                     Hidden = false,
                     Icon = action.ActionIcon,
+                    Team = activePlayer.Team,
                     OnClick = () =>
                     {
                         Debug.Log("Invoking secondary action: " + action.ActionName);
@@ -197,6 +204,7 @@ public class GameManager : MonoBehaviour
                 Disabled = false,
                 Hidden = false,
                 Icon = GlobalResources.CancelSprite,
+                Team = activePlayer.Team,
                 OnClick = () =>
                 {
                     Debug.Log($"Cancelling active action ({activeAction.ActionName})");
@@ -216,6 +224,7 @@ public class GameManager : MonoBehaviour
                     Disabled = !target.IsAvailable,
                     Hidden = false,
                     Icon = target.GameObject.GetComponent<Character>().GetSprite(),
+                    Team = target.Team,
                     OnClick = () =>
                     {
                         Debug.Log($"Picked target: {target.TargetName}");

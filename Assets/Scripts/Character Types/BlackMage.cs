@@ -63,8 +63,8 @@ public class BlackMage : Character
     
     public void Fire(GameObject target, int turn)
     {
-        var wand = weapon.GetComponent<Projectile>();
-        wand.Shoot(target);
+        var projectile = weapon.GetComponent<Projectile>();
+        projectile.Shoot(target);
 
     }
 
@@ -72,6 +72,18 @@ public class BlackMage : Character
     {
         var targets = GetAvailableTargets();
 
-        return Array.Empty<CharacterAction>();
+        if (targets.Length == 0)
+            return Array.Empty<CharacterAction>();
+
+        return new CharacterAction[]
+        {
+            new CharacterAction
+            {
+                ActionName = "Magic Missile",
+                ActionIcon = null,
+                Targets = Array.Empty<GameTarget>(),
+                OnInvoke = MagicMissile,
+            }
+        };
     }
 }

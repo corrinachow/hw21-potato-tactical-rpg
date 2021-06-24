@@ -34,10 +34,6 @@ public class Warrior : Character
         base.CheckIfDead();
     }
 
-    public override void ReceiveBuff(Buff buff)
-    {
-        
-    }
 
     public override void DealMagicDamage()
     {
@@ -78,6 +74,7 @@ public class Warrior : Character
             TargetName = c.CharacterName,
             // TODO: Implement me (check collision, etc)
             IsAvailable = true,
+            Team = Team == Team.Team1 ? Team.Team2 : Team.Team1,
         }).ToArray();
 
         return new[]
@@ -110,6 +107,7 @@ public class Warrior : Character
                         GameObject = gameObject,
                         IsAvailable = true,
                         TargetName = CharacterName,
+                        Team = Team,
                     }
                 },
                 // TODO: Implement me (check effects, last turn used, etc)

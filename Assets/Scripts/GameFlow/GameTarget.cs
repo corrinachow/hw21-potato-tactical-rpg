@@ -6,5 +6,7 @@ public class GameTarget
 
     public string TargetName { get; set; }
 
+    public Team Team { get; set; }
+
     public bool IsAvailable { get; set; }
 }

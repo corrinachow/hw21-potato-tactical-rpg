@@ -59,7 +59,9 @@ public abstract class Character : MonoBehaviour
     }
     
     public virtual void ReceiveBuff(Buff buff){
-        throw new NotImplementedException();
+        Magic += buff.Magic;
+        Strength += buff.Strength;
+        CurrentHealth += buff.Health;
     }
 
     public virtual void DealDamage()
@@ -99,7 +101,7 @@ public abstract class Character : MonoBehaviour
         (string enemyTag, string enemyLayer) enemyTuple = gameObject.transform.CompareTag("RedTeam") ? ("BlueTeam", "BlueTarget") : ("RedTeam", "RedTarget");
         var allEnemyTargets = GameObject.FindGameObjectsWithTag(enemyTuple.enemyTag);
 
-        // check if each target is in site
+        // check if each target is in sight
         var filtered = new List<GameObject>();
         foreach (var target in allEnemyTargets)
         {

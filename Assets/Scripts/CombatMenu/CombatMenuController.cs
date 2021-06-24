@@ -220,6 +220,7 @@ public class CombatMenuController : MonoBehaviour
                 selectedColor = teamColor * hoverEffect,
             };
 
+            button.onClick.RemoveAllListeners();
             button.onClick.AddListener(menuItem.InvokeClick);
 
             icon.sprite = menuItem.Icon;
