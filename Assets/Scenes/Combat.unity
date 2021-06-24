@@ -151,6 +151,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.727689
       objectReference: {fileID: 0}
+    - target: {fileID: 6591226867696582805, guid: 49889d4268d4b496da7d2e450376bb03,
+        type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6591226868633511784, guid: 49889d4268d4b496da7d2e450376bb03,
         type: 3}
       propertyPath: m_RootOrder
@@ -214,17 +219,17 @@ PrefabInstance:
     - target: {fileID: 6591226868771749640, guid: 49889d4268d4b496da7d2e450376bb03,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.063362
+      value: -0.35623604
       objectReference: {fileID: 0}
     - target: {fileID: 6591226868771749640, guid: 49889d4268d4b496da7d2e450376bb03,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.727689
+      value: -0.0077574253
       objectReference: {fileID: 0}
     - target: {fileID: 6591226868771749640, guid: 49889d4268d4b496da7d2e450376bb03,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 131.39587
+      value: -10.001358
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49889d4268d4b496da7d2e450376bb03, type: 3}
@@ -20820,14 +20825,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011373691}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 688f893b4adee45ca9eaa4f08eb54238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 17831345}
   map: {fileID: 461395105}
-  moveTarget: {fileID: 0}
+  moveTarget: {fileID: 1443906039}
 --- !u!195 &2011373694
 NavMeshAgent:
   m_ObjectHideFlags: 0
