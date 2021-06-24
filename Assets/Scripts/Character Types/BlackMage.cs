@@ -59,7 +59,7 @@ public class BlackMage : Character
     
     public void Fire(GameObject target)
     {
-        var wand = weapon.GetComponent<MagicWand>();
+        var wand = weapon.GetComponent<Projectile>();
         wand.Shoot(target);
     }
 
