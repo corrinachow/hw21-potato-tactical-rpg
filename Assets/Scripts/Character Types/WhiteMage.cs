@@ -8,6 +8,7 @@ public class WhiteMage : Character
 
     public override Team Team => team;
     public override int TotalHealth { get; } = 75;
+    public override string CharacterName => "White Mage";
     
     public override int CurrentHealth{get; protected set;} = 75;
     public override int Magic { get; protected set; } = 15;
@@ -41,23 +42,28 @@ public class WhiteMage : Character
 
     }
 
-    public void MagicArrow(string target){
+    public void MagicArrow(GameObject target, int turn)
+    {
 
     }
 
-    public void Heal(string target){
+    public void Heal(GameObject target, int turn)
+    {
 
     }
 
-    public void Barrier(string target){
+    public void Barrier(GameObject target, int turn)
+    {
 
     }
 
-    public void Manaward(string target){
+    public void Manaward(GameObject target, int turn)
+    {
 
     }
 
-    public virtual void Move(){
+    public virtual void Move()
+    {
 
     }
 
@@ -65,7 +71,7 @@ public class WhiteMage : Character
         // Destroy(gameObject);
     }
     
-    public override CharacterAction[] GetActions()
+    public override CharacterAction[] GetActions(int roundIndex)
     {
         // TODO: To be implemented
         return Array.Empty<CharacterAction>();

@@ -10,6 +10,7 @@ public class BlackMage : Character
     public override Team Team => team;
 
     public override int TotalHealth { get; } = 75;
+    public override string CharacterName => "Black Mage";
     
     public override int CurrentHealth{get; protected set;} = 75;
     public override int Magic { get; protected set; } = 15;
@@ -41,31 +42,37 @@ public class BlackMage : Character
 
     }
 
-    public virtual void Move(){
+    public virtual void Move()
+    {
 
     }
 
-    public void MagicMissile(string target){
-
-    }
-    
-    public void Ice(string target){
+    public void MagicMissile(GameObject target, int turn) 
+    {
 
     }
     
-    public void Lightening(string target){
+    public void Ice(GameObject target, int turn)
+    {
 
     }
     
-    public void Fire(string target){
+    public void Lightening(GameObject target, int turn)
+    {
+
+    }
+    
+    public void Fire(GameObject target, int turn)
+    {
 
     }
 
-    public override void Death(){
+    public override void Death()
+    {
         // Destroy(gameObject);
     }
 
-    public override CharacterAction[] GetActions()
+    public override CharacterAction[] GetActions(int roundIndex)
     {
         // TODO: To be implemented
         return Array.Empty<CharacterAction>();

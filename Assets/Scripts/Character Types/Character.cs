@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -19,8 +20,21 @@ public struct Spell
 // inherit from, such as White Mage / Black Mage / Warrior
 public abstract class Character : MonoBehaviour
 {
+    private static readonly Dictionary<Team, string> FriendlyTagMap = new Dictionary<Team, string>
+    {
+        {Team.Team1, "BlueTeam"},
+        {Team.Team2, "RedTeam"}
+    };
+
+    private static readonly Dictionary<Team, string> FoesTagMap = new Dictionary<Team, string>
+    {
+        {Team.Team1, "RedTeam"},
+        {Team.Team2, "BlueTeam"},
+    };
+
     abstract public int TotalHealth { get; }
     abstract public Team Team { get; }
+    abstract public string CharacterName { get; }
     
     abstract public int CurrentHealth { get; protected set; }
     abstract public int Magic { get; protected set; }
@@ -70,5 +84,19 @@ public abstract class Character : MonoBehaviour
         return sprite;
     }
 
-    public abstract CharacterAction[] GetActions();
+    public abstract CharacterAction[] GetActions(int roundIndex);
+
+    public virtual Character[] GetCharacterTargets(TargetType type, bool includeSelf)
+    {
+        var tagMap = type == TargetType.Friend ? FriendlyTagMap : FoesTagMap;
+        var tag = tagMap[Team];
+
+        var targets = GameObject.FindGameObjectsWithTag(tag)
+            .Select(go => go.GetComponent<Character>())
+            .Where(c => c != null)
+            .Where(c => !includeSelf && c.name != name)
+            .ToArray();
+
+        return targets;
+    }
 }

@@ -21,14 +21,13 @@ public class CombatMenuController : MonoBehaviour
     private ActionButton[] secondaryActionButtons;
     private ActionButton[] cameraActionButtons;
 
-    public MenuAction MainAction { get; set; }
-    public MenuAction[] SecondaryActions { get; set; }
-    public MenuAction[] CameraActions { get; set; }
-    public Team CurrentTeam { get; set; } = Team.Team1;
+    public MenuItem MainItem { get; set; }
+    public MenuItem[] SecondaryActions { get; set; }
+    public MenuItem[] CameraActions { get; set; }
 
     public void Refresh()
     {
-        ConfigureButton(MainAction, mainActionButton);
+        ConfigureButton(MainItem, mainActionButton);
 
         for (var i = 0; i < Math.Max(secondaryActionsCount, cameraActionsCount); i++)
         {
@@ -52,20 +51,20 @@ public class CombatMenuController : MonoBehaviour
         return items[index];
     }
     
-    private void ConfigureButton(MenuAction action, ActionButton button)
+    private void ConfigureButton(MenuItem item, ActionButton button)
     {
         if (button == null)
         {
             return;
         }
 
-        if (action == null)
+        if (item == null)
         {
             button.Reset();
         }
         else
         {
-            button.SetupButton(action, CurrentTeam);
+            button.SetupButton(item);
         }
     }
 
@@ -84,7 +83,7 @@ public class CombatMenuController : MonoBehaviour
         var image = mainButtonEl.GetComponentsInChildren<Image>()[1];
         
         var actionButton = new ActionButton(button, image);
-        ConfigureButton(MainAction, actionButton);
+        ConfigureButton(MainItem, actionButton);
 
         return actionButton;
     }
@@ -152,13 +151,13 @@ public class CombatMenuController : MonoBehaviour
             this.icon = icon;
         }
 
-        public void SetupButton(MenuAction menuAction, Team activeTeam)
+        public void SetupButton(MenuItem menuItem)
         {
-            var teamColor = activeTeam == Team.Team1 ? GlobalResources.Team1Color : GlobalResources.Team2Color;
+            var teamColor = menuItem.Team == Team.Team1 ? GlobalResources.Team1Color : GlobalResources.Team2Color;
             var hoverEffect = new Color(0.8f, 0.8f, 0.8f, 1f);
 
-            button.gameObject.SetActive(!menuAction.Hidden);
-            button.interactable = !menuAction.Disabled;
+            button.gameObject.SetActive(!menuItem.Hidden);
+            button.interactable = !menuItem.Disabled;
             button.transition = Selectable.Transition.ColorTint;
             button.colors = new ColorBlock
             {
@@ -171,10 +170,11 @@ public class CombatMenuController : MonoBehaviour
                 selectedColor = teamColor * hoverEffect,
             };
 
-            button.onClick.AddListener(menuAction.InvokeClick);
+            button.onClick.AddListener(() => menuItem.InvokeClick());
 
-            icon.sprite = menuAction.Icon;
-            icon.color = menuAction.Disabled ? new Color(1f, 1f, 1f, 0.6f) : Color.white;
+            icon.sprite = menuItem.Icon;
+            icon.preserveAspect = true;
+            icon.color = menuItem.Disabled ? new Color(1f, 1f, 1f, 0.6f) : Color.white;
         }
 
         public void Reset()

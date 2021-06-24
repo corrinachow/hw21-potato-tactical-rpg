@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuAction
+public class MenuItem
 {
     public string Name { get; set; }
 
@@ -12,6 +12,8 @@ public class MenuAction
     public bool Disabled { get; set; } = false;
 
     public bool Hidden { get; set; } = false;
+
+    public Team Team { get; set; }
 
     public Button.ButtonClickedEvent OnClick = new Button.ButtonClickedEvent();
 

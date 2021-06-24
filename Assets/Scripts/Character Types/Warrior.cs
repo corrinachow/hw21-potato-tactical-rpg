@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class Warrior : Character
@@ -8,12 +10,13 @@ public class Warrior : Character
     public Team team;
 
     public override Team Team => team;
+    public override string CharacterName => "Warrior";
     public override int TotalHealth { get; } = 100;
     
     public override int CurrentHealth {get; protected set;} = 100;
     public override int Magic { get; protected set; } = 5;
     public override int Strength { get; protected set; } = 10;
-    public override int Speed { get; protected set; } = 10;
+    public override int Speed { get; protected set; } = 20;
     public override int CritialHitPercent { get; protected set; } = 3;
     public override int Defense { get; protected set; } = 10; 
     public override int MagicDefense { get; protected set; } = 5;
@@ -42,40 +45,102 @@ public class Warrior : Character
         Debug.Log("Magic CurrentHealth: "+ CurrentHealth);
     }
 
-    public override void ReceiveBuff(Buff buff){
+    public override void ReceiveBuff(Buff buff)
+    {
         
     }
 
-    public override void DealMagicDamage(){
+    public override void DealMagicDamage()
+    {
 
     }
 
-    public virtual void Move(){
+    public virtual void Move()
+    {
 
     }
     
-    public void Sword(){
+    public void Sword(GameObject target, int turn)
+    {
 
     }
 
-    public void Charge(string target){
+    public void Charge(GameObject target, int turn) 
+    {
 
     }
 
-    public void Shield(){
+    public void Shield(GameObject target, int turn) 
+    {
 
     }
 
-    public void AxeThrow(string target){
+    public void AxeThrow(GameObject target, int turn)
+    {
 
     }
-    public override void Death(){
+    
+    public override void Death()
+    {
         // Destroy(gameObject);
     }
 
-    public override CharacterAction[] GetActions()
+    public override CharacterAction[] GetActions(int roundIndex)
     {
-        // TODO: To be implemented
-        return Array.Empty<CharacterAction>();
+        var foes = GetCharacterTargets(TargetType.Foe, false);
+        var targets = foes.Select(c => new GameTarget
+        {
+            GameObject = c.gameObject,
+            TargetName = c.CharacterName,
+            // TODO: Implement me (check collision, etc)
+            IsAvailable = true,
+        }).ToArray();
+
+        return new[]
+        {
+            new CharacterAction
+            {
+                ActionName = "Sword attack",
+                ActionIcon = GlobalResources.WarriorSwordAttackSprite,
+                Targets = targets,
+                IsAvailable = true,
+                OnInvoke = this.Sword,
+            },
+            new CharacterAction
+            {
+                ActionName = "Charge",
+                ActionIcon = GlobalResources.WarriorChargeSprite,
+                Targets = targets,
+                // TODO: Implement me (check effects, last turn used, etc)
+                IsAvailable = true,
+                OnInvoke = this.Charge,
+            },
+            new CharacterAction
+            {
+                ActionName = "Shield",
+                ActionIcon = GlobalResources.WarriorDefendSprite,
+                Targets = new[]
+                {
+                    new GameTarget
+                    {
+                        GameObject = gameObject,
+                        IsAvailable = true,
+                        TargetName = CharacterName,
+                    }
+                },
+                // TODO: Implement me (check effects, last turn used, etc)
+                IsAvailable = true,
+                OnInvoke = this.Shield,
+            },
+            new CharacterAction
+            {
+                ActionName = "Throw Axe",
+                ActionIcon = GlobalResources.WarriorThrowSprite,
+                Targets = targets,
+                // TODO: Implement me (check effects, last turn used, etc)
+                IsAvailable = true,
+                OnInvoke = this.AxeThrow,
+            }
+        };
     }
 }
