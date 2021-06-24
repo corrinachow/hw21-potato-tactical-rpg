@@ -27,16 +27,10 @@ public class MagicWand : MonoBehaviour
         // they are in line-of-sight. If they are, shoot a real fireball
         var targets = GameObject.FindGameObjectsWithTag(targetTag);
 
-        Debug.Log("Targets: " + targets.Length);
-        Debug.Log(targetTag);
-
         foreach (var target in targets)
         {
             var direction = (target.transform.position - firePoint.position).normalized;
             var hit = Physics2D.Raycast(firePoint.position, direction * 1000, 1000, layerMask);
-
-            Debug.DrawRay(firePoint.position, direction * 10_000, Color.red, 10f);
-            Debug.Log("Tag hit: " + hit.transform.tag + " | Name: " + hit.transform.name);
 
             if (hit.transform.CompareTag(targetTag))
             {
