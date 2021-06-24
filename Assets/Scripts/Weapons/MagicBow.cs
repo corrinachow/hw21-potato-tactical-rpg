@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicArrow : Weapon
+public class MagicBow : Weapon
 {
 
      // Damage struct
@@ -22,10 +22,6 @@ public class MagicArrow : Weapon
 
     }
 
-    protected void OnTriggerEnter2D(Collider2D coll){
-        //DMG = ([25 x RANDOM(1~1.125)] x [2 + MAG x MAG/256)])  * 0.8 * ((100-MDEF) /100)
-    }
-
 
     protected override void Action(){
         if(Input.GetKeyDown(KeyCode.Space))
@@ -36,6 +32,6 @@ public class MagicArrow : Weapon
     }
 
     private void ShootArrow(){
-        // animator.SetTrigger("ShootMagicArrow");
+        animator.SetTrigger("ShootMagicArrow");
     }
 }

@@ -32,10 +32,10 @@ public class Collidable : MonoBehaviour
 
     protected virtual void OnCollide(Collider2D coll)
     {
-        Debug.Log(coll.name);
+        //Debug.Log(coll.name);
     }
 
     protected virtual void OnCollisionEnter(Collision coll) {
-        Debug.Log("enter "+ coll.gameObject.name);
+        //Debug.Log("enter "+ coll.gameObject.name);
     }
 }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 0.0001f;
+    public float speed = 20f;
     public int damageAmount = 5;
     public float pushForce = 2f;
     public Rigidbody2D rb;
 
-    void Start()
+    void Fire (Vector3 position)
     {
-        rb.velocity = transform.right * speed;
+        rb.velocity = position * speed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -27,6 +27,7 @@ public class Bullet : MonoBehaviour
             enemy.ReceiveDamage(dmg);
         }
 
-        Destroy(gameObject, 2f);
+        // Destroy bullet after 10 seconds if it doesn't hit anything
+        Destroy(gameObject, 10f);
     }
 }
