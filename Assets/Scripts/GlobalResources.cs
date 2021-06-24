@@ -8,6 +8,13 @@ public static class GlobalResources
     // Color palette
     public static Color Team1Color { get; } = new Color(0.3529412f, 0.5686275f, 0.7333333f);
     public static Color Team2Color { get; } = new Color(0.8117647f, 0.2745098f, 0.3098039f);
+    
+    // Camera actions sprites
+    public static Sprite TargetSprite { get; set; } = null;
+    
+    // Confirm action sprites
+    public static Sprite ConfirmSprite { get; set; } = null;
+    public static Sprite CancelSprite { get; set; } = null;
 
     // Warrior MoveSet sprites
     public static Sprite WarriorSwordAttackSprite { get; set; } = null;

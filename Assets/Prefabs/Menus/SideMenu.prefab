@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8760643689604497174}
   - component: {fileID: 8760643689604497175}
   - component: {fileID: 8760643689604497172}
+  - component: {fileID: 5943084759221979286}
   m_Layer: 5
   m_Name: SideMenu
   m_TagString: Untagged
@@ -100,6 +101,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5943084759221979286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760643689604497173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fa080d4c41a42198db5a47df5235ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 8760643691042254669}
+  prefab: {fileID: 8177983683128719791, guid: c095a4283523548e6adcf71de043aad8, type: 3}
 --- !u!1 &8760643691042254669
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +126,6 @@ GameObject:
   - component: {fileID: 8760643691042254668}
   - component: {fileID: 8760643691042254670}
   - component: {fileID: 8760643691042254671}
-  - component: {fileID: 8760643691042254673}
   m_Layer: 5
   m_Name: Container
   m_TagString: Untagged
@@ -176,17 +190,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8760643691042254673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8760643691042254669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7fa080d4c41a42198db5a47df5235ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 8760643691042254669}
-  prefab: {fileID: 8177983683128719791, guid: c095a4283523548e6adcf71de043aad8, type: 3}
