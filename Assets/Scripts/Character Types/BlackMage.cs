@@ -60,15 +60,13 @@ public class BlackMage : Character
     public void Fire(GameObject target)
     {
         var wand = weapon.GetComponent<MagicWand>();
-        if (wand.IsInSight(target))
-        {
-            wand.Shoot(target);
-        }
+        wand.Shoot(target);
     }
 
     public override CharacterAction[] GetActions()
     {
-        // TODO: To be implemented
+        var targets = GetAvailableTargets();
+
         return Array.Empty<CharacterAction>();
     }
 }

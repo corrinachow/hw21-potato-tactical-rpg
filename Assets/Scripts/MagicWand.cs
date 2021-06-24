@@ -23,7 +23,7 @@ public class MagicWand : MonoBehaviour
         return hit.transform.CompareTag(targetTag);
     }
 
-    public void Shoot (GameObject target)
+    public void Shoot(GameObject target)
     {
         GameObject go = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity) as GameObject;
         go.SendMessage("Fire", Direction(target));
