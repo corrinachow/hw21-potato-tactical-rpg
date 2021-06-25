@@ -62,7 +62,6 @@ public class Warrior : Character
     public void Shield(GameObject target, int turn)
     {
         var shield = transform.GetComponentInChildren<Shield>();
-        
         shield.OpenShield();
     }
 

@@ -31,7 +31,7 @@ public class MagicBow : Weapon
 
     }
 
-    private void ShootArrow(){
+    public void ShootArrow(){
         animator.SetTrigger("ShootMagicArrow");
     }
 }

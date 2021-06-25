@@ -58,6 +58,9 @@ public class WhiteMage : Character
 
     public void MagicArrow(GameObject target, int turn)
     {
+        var bow = weapon.GetComponent<MagicBow>();
+        bow.ShootArrow();
+
         var arrow = weapon.GetComponent<Projectile>();
         arrow.Shoot(target, MagicArrowPrefab);
     }

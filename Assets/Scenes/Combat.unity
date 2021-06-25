@@ -1165,6 +1165,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &544922985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544922983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0913a0b147ea948f8822a3760e2c3c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
 --- !u!1001 &734646006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1579,7 +1605,7 @@ MonoBehaviour:
   MagicArrowPrefab: {fileID: 1300491471457730742, guid: 3b7b141c7667d4a1dbb9ab1d3f6e3366,
     type: 3}
   team: 0
-  weapon: {fileID: 0}
+  weapon: {fileID: 1715535312}
 --- !u!1 &1056065757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2290,6 +2316,12 @@ PrefabInstance:
       propertyPath: team
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2816808078955907488, guid: 4120fe2ed9a29428893de774dc6fd413,
+        type: 3}
+      propertyPath: AxePrefab
+      value: 
+      objectReference: {fileID: 1300491471457730742, guid: bb9b01c89d74d4eaaa7f4f0fb63f75dd,
+        type: 3}
     - target: {fileID: 2995444715743487854, guid: 4120fe2ed9a29428893de774dc6fd413,
         type: 3}
       propertyPath: m_SortingLayer
@@ -2513,7 +2545,7 @@ MonoBehaviour:
   MagicArrowPrefab: {fileID: 1300491471457730742, guid: 3b7b141c7667d4a1dbb9ab1d3f6e3366,
     type: 3}
   team: 1
-  weapon: {fileID: 0}
+  weapon: {fileID: 544922983}
 --- !u!1 &1530515127 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7606806544522722104, guid: 50a0b9ecdf1174412a55a347c2da4453,
@@ -2687,6 +2719,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1715535314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715535312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0913a0b147ea948f8822a3760e2c3c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
 --- !u!1 &1765859945 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5143035622930948343, guid: 50a0b9ecdf1174412a55a347c2da4453,
