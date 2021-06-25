@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BlackMage : Character
@@ -95,44 +96,52 @@ public class BlackMage : Character
     {
         var projectile = weapon.GetComponent<Projectile>();
         projectile.Shoot(target);
-
     }
 
     public override CharacterAction[] GetActions(int roundIndex)
     {
-        var targets = GetAvailableTargets();
+        var foes = GetCharacterTargets(TargetType.Foe, true);
+        var targets = foes.Select(c => new GameTarget
+        {
+            GameObject = c.gameObject,
+            TargetName = c.CharacterName,
+            // TODO: Implement me (check collision, etc)
+            IsAvailable = true,
+            Team = Team == Team.Team1 ? Team.Team2 : Team.Team1,
+        }).ToArray();
 
-        if (targets.Length == 0)
-            return Array.Empty<CharacterAction>();
-
-        return new CharacterAction[]
+        return new []
         {
             new CharacterAction
             {
                 ActionName = "Magic Missile",
                 ActionIcon = GlobalResources.BlackMageMagicMissileSprite,
-                Targets = Array.Empty<GameTarget>(),
+                Targets = targets,
+                IsAvailable = true,
                 OnInvoke = this.MagicMissile,
             },
             new CharacterAction
             {
                 ActionName = "Fire",
                 ActionIcon = GlobalResources.BlackMageFireAttackSprite,
-                Targets = Array.Empty<GameTarget>(),
+                Targets = targets,
+                IsAvailable = true,
                 OnInvoke = this.Fire,
             },
             new CharacterAction
             {
                 ActionName = "Lightening",
                 ActionIcon = GlobalResources.BlackMageLightningAttackSprite,
-                Targets = Array.Empty<GameTarget>(),
+                Targets = targets,
+                IsAvailable = true,
                 OnInvoke = this.Lightening,
             },
             new CharacterAction
             {
                 ActionName = "Ice",
                 ActionIcon = GlobalResources.BlackMageIceAttackSprite,
-                Targets = Array.Empty<GameTarget>(),
+                Targets = targets,
+                IsAvailable = true,
                 OnInvoke = this.Ice,
             }
         };
