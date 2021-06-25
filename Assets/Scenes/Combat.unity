@@ -295,16 +295,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 1151331259}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6591226867558382635, guid: 49889d4268d4b496da7d2e450376bb03,
+        type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6591226867558382676, guid: 49889d4268d4b496da7d2e450376bb03,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28.893362
+      value: -5.57
       objectReference: {fileID: 0}
     - target: {fileID: 6591226867558382676, guid: 49889d4268d4b496da7d2e450376bb03,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6276889
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6591226867558382676, guid: 49889d4268d4b496da7d2e450376bb03,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 131.39587
       objectReference: {fileID: 0}
     - target: {fileID: 6591226867696582804, guid: 49889d4268d4b496da7d2e450376bb03,
         type: 3}
@@ -314,7 +324,17 @@ PrefabInstance:
     - target: {fileID: 6591226867696582805, guid: 49889d4268d4b496da7d2e450376bb03,
         type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 5
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6591226867696582806, guid: 49889d4268d4b496da7d2e450376bb03,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.35623604
+      objectReference: {fileID: 0}
+    - target: {fileID: 6591226867696582806, guid: 49889d4268d4b496da7d2e450376bb03,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0077574253
       objectReference: {fileID: 0}
     - target: {fileID: 6591226868633511784, guid: 49889d4268d4b496da7d2e450376bb03,
         type: 3}
@@ -389,12 +409,12 @@ PrefabInstance:
     - target: {fileID: 6591226868771749640, guid: 49889d4268d4b496da7d2e450376bb03,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28.893362
+      value: -5.57
       objectReference: {fileID: 0}
     - target: {fileID: 6591226868771749640, guid: 49889d4268d4b496da7d2e450376bb03,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6276889
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6591226868771749640, guid: 49889d4268d4b496da7d2e450376bb03,
         type: 3}
@@ -425,6 +445,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: MainCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6591226868771749647, guid: 49889d4268d4b496da7d2e450376bb03,
+        type: 3}
+      propertyPath: orthographic size
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 6591226868771749647, guid: 49889d4268d4b496da7d2e450376bb03,
         type: 3}

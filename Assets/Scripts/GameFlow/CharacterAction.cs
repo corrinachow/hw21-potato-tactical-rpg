@@ -11,5 +11,6 @@ public class CharacterAction
 
     public GameTarget[] Targets { get; set; }
 
+    public Action ImmediateInvoke { get; set; }
     public Action<GameObject, int> OnInvoke { get; set; }
 }

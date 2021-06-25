@@ -11,6 +11,9 @@ public static class AssetInitializer
         // Camera assets
         GlobalResources.TargetSprite = InitializeSpriteAsset("Icons/Camera/Target", assetLoader);
         
+        // Move asset
+        GlobalResources.MoveSprite = InitializeSpriteAsset("Icons/Action/Move", assetLoader);
+        
         // Confirm action assets
         GlobalResources.CancelSprite = InitializeSpriteAsset("Icons/Action/Cancel", assetLoader);
         GlobalResources.ConfirmSprite = InitializeSpriteAsset("Icons/Action/Confirm", assetLoader);

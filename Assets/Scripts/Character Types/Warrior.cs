@@ -73,7 +73,7 @@ public class Warrior : Character
 
     public override CharacterAction[] GetActions(int roundIndex)
     {
-        var foes = GetCharacterTargets(TargetType.Foe, false);
+        var foes = GetCharacterTargets(TargetType.Foe, true);
         var targets = foes.Select(c => new GameTarget
         {
             GameObject = c.gameObject,

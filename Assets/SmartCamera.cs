@@ -104,7 +104,6 @@ public class SmartCamera : MonoBehaviour
 
     public void FocusOn(GameObject gameObject)
     {
-
         playerCamera.Follow = gameObject.transform;
         playerCamera.MoveToTopOfPrioritySubqueue();
     }

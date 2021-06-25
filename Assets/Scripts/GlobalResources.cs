@@ -12,6 +12,9 @@ public static class GlobalResources
     // Camera actions sprites
     public static Sprite TargetSprite { get; set; } = null;
     
+    // Movement sprites
+    public static Sprite MoveSprite { get; set; } = null;
+    
     // Confirm action sprites
     public static Sprite ConfirmSprite { get; set; } = null;
     public static Sprite CancelSprite { get; set; } = null;

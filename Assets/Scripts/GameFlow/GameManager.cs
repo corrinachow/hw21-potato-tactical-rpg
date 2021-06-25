@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,9 +15,14 @@ public class GameManager : MonoBehaviour
     private int turnActions = 0;
     private bool hideMenu = false;
     
+    private bool isMoving = false;
+    private bool moveSelectionMade = false;
+
     private CharacterAction[] activeCharacterActions;
     private CharacterAction activeAction;
-    
+    private CharacterAction moveAction;
+
+    private SmartCamera smartCamera;
     private CombatMenuController combatMenuController;
     private SideMenuController sideMenuController;
     
@@ -25,15 +31,58 @@ public class GameManager : MonoBehaviour
         AssetInitializer.InitializeAssets();
 
         combatMenuController = GameObject.Find("CombatMenu").GetComponent<CombatMenuController>();
-        Assert.IsNotNull(combatMenuController);
+        Assert.IsNotNull(combatMenuController, "combatMenuController != null");
         
         sideMenuController = GameObject.Find("SideMenu").GetComponent<SideMenuController>();
-        Assert.IsNotNull(sideMenuController);
-        
+        Assert.IsNotNull(sideMenuController, "sideMenuController != null");
+
+        smartCamera = GameObject.Find("Main Camera").GetComponent<SmartCamera>();
+        Assert.IsNotNull(smartCamera, "smartCamera != null");
+
+        moveAction = new CharacterAction
+        {
+            ActionName = "Move",
+            ActionIcon = GlobalResources.MoveSprite,
+            Targets = null,
+            IsAvailable = true,
+            ImmediateInvoke = this.MoveCharacter,
+        };
+
         playableCharacters = DiscoverCharacters();
         roundIndex = 0;
         
         StartRound();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!isMoving || moveSelectionMade)
+        {
+            return;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("MouseButtonDown detected");
+            
+            var mousePosition = Input.mousePosition;
+            
+            var activePlayer = turnOrder.Peek();
+            activePlayer.GetComponent<Player>().TargetPoint(mousePosition);
+            moveSelectionMade = true;
+            
+            RefreshCombatMenu();
+        } else if (Input.touchCount > 0)
+        {
+            Debug.Log("Touch action detected");
+            
+            var touchPosition = Input.touches[0].position;
+            var activePlayer = turnOrder.Peek();
+            activePlayer.GetComponent<Player>().TargetPoint(touchPosition);
+            moveSelectionMade = true;
+            
+            RefreshCombatMenu();
+        }
     }
 
     private Character[] DiscoverCharacters()
@@ -69,7 +118,9 @@ public class GameManager : MonoBehaviour
     private void StartTurn()
     {
         turnActions = 0;
-        
+        smartCamera.FocusOn(turnOrder.Peek().gameObject);
+        smartCamera.SetToOverviewCamera();
+
         RefreshSideMenu();
         StartAction();
     }
@@ -92,14 +143,15 @@ public class GameManager : MonoBehaviour
     {
         var activePlayer = turnOrder.Peek();
         activeCharacterActions = activePlayer.GetActions(roundIndex);
-        
+
         RefreshCombatMenu();
     }
 
     private void EndAction()
     {
-        // Maybe wait for animation to conclude?
         activeAction = null;
+        isMoving = false;
+        moveSelectionMade = false;
         turnActions++;
         
         RefreshSideMenu();
@@ -112,6 +164,22 @@ public class GameManager : MonoBehaviour
         {
             StartAction();
         }
+    }
+
+    private void MoveCharacter()
+    {
+        Debug.Log("Initiating movement");
+        activeAction = moveAction;
+        
+        var activeChar = turnOrder.Peek();
+        smartCamera.FocusOn(activeChar.gameObject);
+        smartCamera.SetToOverviewCamera();
+            
+        var player = activeChar.GetComponent<Player>();
+        player.DisplayMoveCircle();
+        
+        isMoving = true;
+        moveSelectionMade = false;
     }
 
     private void RefreshSideMenu()
@@ -166,6 +234,7 @@ public class GameManager : MonoBehaviour
                         Debug.Log($"Main action invoked: {mainAction.ActionName}");
 
                         activeAction = mainAction;
+                        mainAction?.ImmediateInvoke();
                         RefreshCombatMenu();
                     }
                 };
@@ -173,7 +242,7 @@ public class GameManager : MonoBehaviour
                 combatMenuController.MainItem = menuItem;
             }
 
-            combatMenuController.SecondaryActions = activeCharacterActions.Skip(1).Select(action =>
+            combatMenuController.SecondaryActions = activeCharacterActions.Skip(1).Append(moveAction).Select(action =>
             {
                 var menuItem = new MenuItem()
                 {
@@ -188,6 +257,7 @@ public class GameManager : MonoBehaviour
                         Debug.Log("Invoking secondary action: " + action.ActionName);
                         
                         activeAction = action;
+                        action?.ImmediateInvoke();
                         RefreshCombatMenu();
                     }
                 };
@@ -195,7 +265,7 @@ public class GameManager : MonoBehaviour
                 return menuItem;
             }).ToArray();
         }
-        else
+        else if (activeAction.Targets != null)
         {
             var cancelMenuItem = new MenuItem
             {
@@ -237,7 +307,67 @@ public class GameManager : MonoBehaviour
                 return menuItem;
             }).ToArray();
         }
-        
+        else
+        {
+            var cancelMenuItem = new MenuItem
+            {
+                Name = "Cancel",
+                Label = $"Cancel {activeAction.ActionName}",
+                Disabled = false,
+                Hidden = false,
+                Icon = GlobalResources.CancelSprite,
+                Team = activePlayer.Team,
+                OnClick = () =>
+                {
+                    Debug.Log($"Cancelling active action ({activeAction.ActionName})");
+                    
+                    activeAction = null;
+                    isMoving = false;
+                    moveSelectionMade = false;
+                    
+                    RefreshCombatMenu();
+                }
+            };
+            combatMenuController.MainItem = cancelMenuItem;
+
+            combatMenuController.SecondaryActions = new[]
+            {
+                new MenuItem
+                {
+                    Name = "Confirm",
+                    Label = "Confirm move",
+                    Disabled = !moveSelectionMade,
+                    Hidden = false,
+                    Icon = GlobalResources.ConfirmSprite,
+                    Team = activePlayer.Team,
+                    OnClick = () =>
+                    {
+                        activePlayer.GetComponent<Player>().MoveToDestination();
+                        EndAction();
+                    }
+                }
+            };
+        }
+
+
+        combatMenuController.CameraActions = new[]
+        {
+            new MenuItem
+            {
+                Name = "Focus/Unfocus camera",
+                Label = "Whatever...",
+                Disabled = false,
+                Hidden = false,
+                Icon = GlobalResources.TargetSprite,
+                Team = activePlayer.Team,
+                OnClick = () =>
+                {
+                    smartCamera.FocusOn(activePlayer.gameObject);
+                    smartCamera.SetToOverviewCamera();
+                }
+            }
+        };
+            
         combatMenuController.Refresh();
     }
 }
