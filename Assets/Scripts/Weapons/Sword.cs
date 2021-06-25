@@ -48,7 +48,7 @@ public class Sword : Weapon
 
     }
 
-    private void Swing(){
+    public void Swing(){
         animator.SetTrigger("Swing_Sword");
     }
 }

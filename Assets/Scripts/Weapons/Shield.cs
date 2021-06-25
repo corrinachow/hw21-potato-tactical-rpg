@@ -39,8 +39,13 @@ public class Shield : Weapon
         }
     }
 
-    private void OpenShield(){
+    public void OpenShield(){
         animator.SetBool("isShieldUp", true);
         Debug.Log("Shield Open!!");
+    }
+    
+    public void CloseShield(){
+        animator.SetBool("isShieldUp", false);
+        Debug.Log("Shield Closed!!");
     }
 }
