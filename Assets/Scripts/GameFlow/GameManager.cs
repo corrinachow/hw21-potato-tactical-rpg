@@ -234,7 +234,7 @@ public class GameManager : MonoBehaviour
                         Debug.Log($"Main action invoked: {mainAction.ActionName}");
 
                         activeAction = mainAction;
-                        mainAction?.ImmediateInvoke();
+                        mainAction.ImmediateInvoke?.Invoke();
                         RefreshCombatMenu();
                     }
                 };
@@ -257,7 +257,7 @@ public class GameManager : MonoBehaviour
                         Debug.Log("Invoking secondary action: " + action.ActionName);
                         
                         activeAction = action;
-                        action?.ImmediateInvoke();
+                        action.ImmediateInvoke?.Invoke();
                         RefreshCombatMenu();
                     }
                 };
