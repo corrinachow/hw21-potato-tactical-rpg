@@ -542,6 +542,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49889d4268d4b496da7d2e450376bb03, type: 3}
+--- !u!1839735485 &424054498 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 3355294792676861019, guid: a97942331ccb7442e8164ef2be6b36a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 94134267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &432611075 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6373563032308925497, guid: 50a0b9ecdf1174412a55a347c2da4453,
@@ -835,7 +841,7 @@ PrefabInstance:
         type: 3}
       propertyPath: map
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 424054498}
     - target: {fileID: 4334557775686879250, guid: 50a0b9ecdf1174412a55a347c2da4453,
         type: 3}
       propertyPath: m_SortingLayer
@@ -990,7 +996,7 @@ PrefabInstance:
         type: 3}
       propertyPath: map
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 424054498}
     - target: {fileID: 703234282949685949, guid: 612692fbb1ff749789f23390e1cf7af9,
         type: 3}
       propertyPath: isFacingLeftAtStart
@@ -1165,7 +1171,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &544922985
+--- !u!114 &544922989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1218,11 +1224,11 @@ PrefabInstance:
         type: 3}
       propertyPath: map
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 424054498}
     - target: {fileID: 3119568227334331136, guid: 4120fe2ed9a29428893de774dc6fd413,
         type: 3}
       propertyPath: isDebug
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3119568227334331136, guid: 4120fe2ed9a29428893de774dc6fd413,
         type: 3}
@@ -1748,7 +1754,7 @@ PrefabInstance:
         type: 3}
       propertyPath: map
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 424054498}
     - target: {fileID: 2790607644637012774, guid: 50a0b9ecdf1174412a55a347c2da4453,
         type: 3}
       propertyPath: isDebug
@@ -2568,11 +2574,11 @@ PrefabInstance:
         type: 3}
       propertyPath: map
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 424054498}
     - target: {fileID: 2447764436923465544, guid: 612692fbb1ff749789f23390e1cf7af9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2654535763549677951, guid: 612692fbb1ff749789f23390e1cf7af9,
         type: 3}
@@ -2719,7 +2725,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1715535314
+--- !u!114 &1715535318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2840,7 +2846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 17831345}
-  map: {fileID: 0}
+  map: {fileID: 424054498}
   moveTarget: {fileID: 1443906039}
   maxMoveCircle: {fileID: 139931805}
   maxMoveDistance: 5
