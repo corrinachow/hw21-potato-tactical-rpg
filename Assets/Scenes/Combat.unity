@@ -16750,6 +16750,11 @@ PrefabInstance:
       objectReference: {fileID: 461395105}
     - target: {fileID: 3119568227334331136, guid: 4120fe2ed9a29428893de774dc6fd413,
         type: 3}
+      propertyPath: isDebug
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3119568227334331136, guid: 4120fe2ed9a29428893de774dc6fd413,
+        type: 3}
       propertyPath: moveTarget
       value: 
       objectReference: {fileID: 734646007}

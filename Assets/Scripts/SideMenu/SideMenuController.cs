@@ -57,6 +57,11 @@ public class SideMenuController : MonoBehaviour
 
     private void UpdatePlaceholders()
     {
+        if (placeholders == null)
+        {
+            placeholders = CreatePlaceholders();
+        }
+        
         for (var i = 0; i < placeholders.Length; i++)
         {
             var characterInfo = charactersInfo.ElementAtOrDefault(i);
