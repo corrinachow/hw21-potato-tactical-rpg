@@ -143,7 +143,15 @@ public abstract class Character : MonoBehaviour
         var targets = GameObject.FindGameObjectsWithTag(tag)
             .Select(go => go.GetComponent<Character>())
             .Where(c => c != null)
-            .Where(c => !includeSelf && c.name != name)
+            .Where(c =>
+            {
+                if (includeSelf)
+                {
+                    return true;
+                }
+
+                return c.name != name;
+            })
             .ToArray();
 
         return targets;
