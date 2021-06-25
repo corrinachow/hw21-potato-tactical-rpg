@@ -3,18 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
+
+    [SerializeField]
+    private Camera cam;
+
+    [SerializeField]
+    private Tilemap map;
     private const int ACTIONS_PER_TURN = 3;
-    
+
     private Character[] playableCharacters;
     private Queue<Character> turnOrder;
-    
+
     private int roundIndex = 0;
     private int turnActions = 0;
     private bool hideMenu = false;
-    
+
     private bool isMoving = false;
     private bool moveSelectionMade = false;
 
@@ -25,14 +32,14 @@ public class GameManager : MonoBehaviour
     private SmartCamera smartCamera;
     private CombatMenuController combatMenuController;
     private SideMenuController sideMenuController;
-    
+
     private void Start()
     {
         AssetInitializer.InitializeAssets();
 
         combatMenuController = GameObject.Find("CombatMenu").GetComponent<CombatMenuController>();
         Assert.IsNotNull(combatMenuController, "combatMenuController != null");
-        
+
         sideMenuController = GameObject.Find("SideMenu").GetComponent<SideMenuController>();
         Assert.IsNotNull(sideMenuController, "sideMenuController != null");
 
@@ -50,7 +57,7 @@ public class GameManager : MonoBehaviour
 
         playableCharacters = DiscoverCharacters();
         roundIndex = 0;
-        
+
         StartRound();
     }
 
@@ -64,23 +71,43 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("MouseButtonDown detected");
-            
+
             var mousePosition = Input.mousePosition;
-            
+            mousePosition = cam.ScreenToWorldPoint(mousePosition);
             var activePlayer = turnOrder.Peek();
-            activePlayer.GetComponent<Player>().TargetPoint(mousePosition);
-            moveSelectionMade = true;
-            
+            var activePlayerPlayerComponent = activePlayer.GetComponent<Player>();
+
+            if (Vector2.Distance(activePlayerPlayerComponent.transform.position, mousePosition) <= 5)
+            {
+                Debug.Log("Is within area" + mousePosition.ToString());
+                Vector3Int gridPosition = map.WorldToCell(mousePosition);
+                // if (map.HasTile(gridPosition))
+                // {
+                // Debug.Log("Has a tile");
+                activePlayerPlayerComponent.TargetPoint(mousePosition);
+                moveSelectionMade = true;
+                // }
+                // else
+                // {
+                // Debug.Log("Does not have tile");
+                // }
+            }
+            else
+            {
+                Debug.Log("Point not close enough!");
+            }
+
             RefreshCombatMenu();
-        } else if (Input.touchCount > 0)
+        }
+        else if (Input.touchCount > 0)
         {
             Debug.Log("Touch action detected");
-            
+
             var touchPosition = Input.touches[0].position;
             var activePlayer = turnOrder.Peek();
             activePlayer.GetComponent<Player>().TargetPoint(touchPosition);
             moveSelectionMade = true;
-            
+
             RefreshCombatMenu();
         }
     }
@@ -95,7 +122,7 @@ public class GameManager : MonoBehaviour
             var character = go.GetComponent<Character>();
             return character;
         }).Where(c => c != null).ToArray();
-        
+
         var sorted = characters
             .OrderByDescending(c => c.Speed)
             .ThenBy(c => (int)c.Team);
@@ -153,7 +180,7 @@ public class GameManager : MonoBehaviour
         isMoving = false;
         moveSelectionMade = false;
         turnActions++;
-        
+
         RefreshSideMenu();
 
         if (turnActions >= ACTIONS_PER_TURN)
@@ -170,14 +197,14 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Initiating movement");
         activeAction = moveAction;
-        
+
         var activeChar = turnOrder.Peek();
         smartCamera.FocusOn(activeChar.gameObject);
         smartCamera.SetToOverviewCamera();
-            
+
         var player = activeChar.GetComponent<Player>();
         player.DisplayMoveCircle();
-        
+
         isMoving = true;
         moveSelectionMade = false;
     }
@@ -199,7 +226,7 @@ public class GameManager : MonoBehaviour
 
             characterInfo[i] = charInfo;
         }
-        
+
         this.sideMenuController.Populate(characterInfo);
     }
 
@@ -209,13 +236,13 @@ public class GameManager : MonoBehaviour
         {
             combatMenuController.MainItem = null;
             combatMenuController.SecondaryActions = null;
-            
+
             combatMenuController.Refresh();
             return;
         }
 
         var activePlayer = turnOrder.Peek();
-        
+
         if (activeAction == null)
         {
             var mainAction = activeCharacterActions.ElementAtOrDefault(0);
@@ -255,7 +282,7 @@ public class GameManager : MonoBehaviour
                     OnClick = () =>
                     {
                         Debug.Log("Invoking secondary action: " + action.ActionName);
-                        
+
                         activeAction = action;
                         action.ImmediateInvoke?.Invoke();
                         RefreshCombatMenu();
@@ -278,7 +305,7 @@ public class GameManager : MonoBehaviour
                 OnClick = () =>
                 {
                     Debug.Log($"Cancelling active action ({activeAction.ActionName})");
-                    
+
                     activeAction = null;
                     RefreshCombatMenu();
                 }
@@ -298,7 +325,7 @@ public class GameManager : MonoBehaviour
                     OnClick = () =>
                     {
                         Debug.Log($"Picked target: {target.TargetName}");
-                        
+
                         activeAction.OnInvoke(target.GameObject, roundIndex);
                         EndAction();
                     }
@@ -320,11 +347,11 @@ public class GameManager : MonoBehaviour
                 OnClick = () =>
                 {
                     Debug.Log($"Cancelling active action ({activeAction.ActionName})");
-                    
+
                     activeAction = null;
                     isMoving = false;
                     moveSelectionMade = false;
-                    
+
                     RefreshCombatMenu();
                 }
             };
@@ -367,7 +394,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         };
-            
+
         combatMenuController.Refresh();
     }
 }
