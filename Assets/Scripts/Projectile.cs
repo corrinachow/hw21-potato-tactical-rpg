@@ -22,10 +22,10 @@ public class Projectile : MonoBehaviour
         var hit = Physics2D.Raycast(firePoint.position, direction * 1000, 1000, layerMask);
         return hit.transform.CompareTag(targetTag);
     }
-
-    public void Shoot(GameObject target)
+    
+    public void Shoot(GameObject target, GameObject bulletPrefab2)
     {
-        GameObject go = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity) as GameObject;
+        GameObject go = Instantiate(bulletPrefab2, firePoint.position, Quaternion.identity) as GameObject;
         Bullet bullet = go.GetComponent<Bullet>();
         bullet.teamToDamage = teamToDamage;
         go.SendMessage("Fire", Direction(target));

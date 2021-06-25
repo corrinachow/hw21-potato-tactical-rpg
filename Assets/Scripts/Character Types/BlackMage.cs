@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class BlackMage : Character
 {
+    public GameObject FireballPrefab;
+    public GameObject IceballPrefab;
+    public GameObject LightningPrefab;
+    public GameObject MissilePrefab;
+
     public Team team;
 
     public override Team Team => team;
@@ -50,13 +55,13 @@ public class BlackMage : Character
     public void MagicMissile(GameObject target, int turn) 
     {
        var projectile = weapon.GetComponent<Projectile>();
-        projectile.Shoot(target);
+        projectile.Shoot(target, MissilePrefab);
     }
     
     public void Ice(GameObject target, int turn)
     {
        var projectile = weapon.GetComponent<Projectile>();
-        projectile.Shoot(target);
+        projectile.Shoot(target, IceballPrefab);
 
         Boolean isSlowed = UnityEngine.Random.value <= 0.25;
 
@@ -75,7 +80,7 @@ public class BlackMage : Character
     public void Lightening(GameObject target, int turn)
     {
        var projectile = weapon.GetComponent<Projectile>();
-        projectile.Shoot(target);
+        projectile.Shoot(target, LightningPrefab);
 
         // TODO: Figure out paralyze stat and skip turn for other target character
         Boolean isParalyzed = UnityEngine.Random.value <= 0.25;
@@ -95,7 +100,7 @@ public class BlackMage : Character
     public void Fire(GameObject target, int turn)
     {
         var projectile = weapon.GetComponent<Projectile>();
-        projectile.Shoot(target);
+        projectile.Shoot(target, FireballPrefab);
     }
 
     public override CharacterAction[] GetActions(int roundIndex)

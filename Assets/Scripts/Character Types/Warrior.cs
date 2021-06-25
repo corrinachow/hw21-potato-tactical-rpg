@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class Warrior : Character
 {
+    public GameObject AxePrefab;
+    public GameObject ChargePrefab;
+
     public Team team;
 
     public override Team Team => team;
@@ -40,11 +43,6 @@ public class Warrior : Character
         base.CheckIfDead();
     }
 
-    public override void DealMagicDamage()
-    {
-
-    }
-
     public virtual void Move()
     {
 
@@ -71,7 +69,7 @@ public class Warrior : Character
     public void AxeThrow(GameObject target, int turn)
     {
         var axeProjectile = axe.GetComponent<Projectile>();
-        axeProjectile.Shoot(target);
+        axeProjectile.Shoot(target, AxePrefab);
     }
 
     public override CharacterAction[] GetActions(int roundIndex)

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class WhiteMage : Character
 {
+    public GameObject MagicArrowPrefab;
+
     public Team team;
 
     public GameObject weapon;
@@ -54,15 +56,10 @@ public class WhiteMage : Character
         base.CheckIfDead();
     }
 
-    public override void DealMagicDamage()
-    {
-
-    }
-
     public void MagicArrow(GameObject target, int turn)
     {
         var arrow = weapon.GetComponent<Projectile>();
-        arrow.Shoot(target);
+        arrow.Shoot(target, MagicArrowPrefab);
     }
 
     public void Heal(GameObject target, int turn)
@@ -74,6 +71,8 @@ public class WhiteMage : Character
             Strength = 0,
             Magic = 0,
             Health = (int)(25 * UnityEngine.Random.Range(1, 1.125f) * (2 + (Magic * (Magic / 256)))),
+            Speed = 0,
+
         };
         
         target.SendMessage("ReceiveBuff", healBuff);
@@ -88,6 +87,7 @@ public class WhiteMage : Character
             Strength = 25,
             Magic = 0,
             Health = 0,
+            Speed = 0,
         };
 
         target.SendMessage("ReceiveBuff", buff);
@@ -102,6 +102,7 @@ public class WhiteMage : Character
             Strength = 0,
             Magic = 25,
             Health = 0,
+            Speed = 0,
         };
 
         target.SendMessage("ReceiveBuff", buff);

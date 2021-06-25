@@ -1177,6 +1177,12 @@ PrefabInstance:
       propertyPath: teamToDamage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2816808078955907488, guid: 4120fe2ed9a29428893de774dc6fd413,
+        type: 3}
+      propertyPath: AxePrefab
+      value: 
+      objectReference: {fileID: 1300491471457730742, guid: bb9b01c89d74d4eaaa7f4f0fb63f75dd,
+        type: 3}
     - target: {fileID: 3119568227334331136, guid: 4120fe2ed9a29428893de774dc6fd413,
         type: 3}
       propertyPath: cam
@@ -1570,6 +1576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001544c3461064feda3ba80116d2e388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MagicArrowPrefab: {fileID: 1300491471457730742, guid: 3b7b141c7667d4a1dbb9ab1d3f6e3366,
+    type: 3}
   team: 0
   weapon: {fileID: 0}
 --- !u!1 &1056065757
@@ -2474,6 +2482,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1de3777e9134236abf5cf29652a272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FireballPrefab: {fileID: 1034388437867329709, guid: 7f3b5259f1076495facc78f8a539a1d6,
+    type: 3}
+  IceballPrefab: {fileID: 7422867270149525619, guid: 8ed5626f7868f4c648e5324d51fecc74,
+    type: 3}
+  LightningPrefab: {fileID: 7330264814990554084, guid: 0c8c22d44266a48a5bcc90aa3fc0b854,
+    type: 3}
+  MissilePrefab: {fileID: 3064691154421169754, guid: ba2ffed36658a410d9518a89f75ac51b,
+    type: 3}
   team: 1
   weapon: {fileID: 1104427439}
 --- !u!1 &1523426746 stripped
@@ -2494,6 +2510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001544c3461064feda3ba80116d2e388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MagicArrowPrefab: {fileID: 1300491471457730742, guid: 3b7b141c7667d4a1dbb9ab1d3f6e3366,
+    type: 3}
   team: 1
   weapon: {fileID: 0}
 --- !u!1 &1530515127 stripped
@@ -2687,6 +2705,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1de3777e9134236abf5cf29652a272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FireballPrefab: {fileID: 1034388437867329709, guid: 7f3b5259f1076495facc78f8a539a1d6,
+    type: 3}
+  IceballPrefab: {fileID: 7422867270149525619, guid: 8ed5626f7868f4c648e5324d51fecc74,
+    type: 3}
+  LightningPrefab: {fileID: 7330264814990554084, guid: 0c8c22d44266a48a5bcc90aa3fc0b854,
+    type: 3}
+  MissilePrefab: {fileID: 3064691154421169754, guid: ba2ffed36658a410d9518a89f75ac51b,
+    type: 3}
   team: 0
   weapon: {fileID: 1530515127}
 --- !u!4 &1866189426 stripped
@@ -2817,5 +2843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3e2f38edf6740dca54422c42c73940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AxePrefab: {fileID: 1300491471457730742, guid: bb9b01c89d74d4eaaa7f4f0fb63f75dd,
+    type: 3}
+  ChargePrefab: {fileID: 0}
   team: 1
-  axe: {fileID: 0}
+  axe: {fileID: 1300491471457730742, guid: bb9b01c89d74d4eaaa7f4f0fb63f75dd, type: 3}
