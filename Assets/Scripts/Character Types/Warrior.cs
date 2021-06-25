@@ -52,7 +52,8 @@ public class Warrior : Character
 
     public void Sword(GameObject target, int turn)
     {
-
+        var sword = transform.GetComponentInChildren<Sword>();
+        sword.Swing();
     }
 
     public void Charge(GameObject target, int turn)
@@ -62,7 +63,9 @@ public class Warrior : Character
 
     public void Shield(GameObject target, int turn)
     {
-
+        var shield = transform.GetComponentInChildren<Shield>();
+        
+        shield.OpenShield();
     }
 
     public void AxeThrow(GameObject target, int turn)

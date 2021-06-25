@@ -48,17 +48,47 @@ public class BlackMage : Character
 
     public void MagicMissile(GameObject target, int turn) 
     {
-
+       var projectile = weapon.GetComponent<Projectile>();
+        projectile.Shoot(target);
     }
     
     public void Ice(GameObject target, int turn)
     {
+       var projectile = weapon.GetComponent<Projectile>();
+        projectile.Shoot(target);
 
+        Boolean isSlowed = UnityEngine.Random.value <= 0.25;
+
+        if (isSlowed) {
+            Buff slowDebuff =  new Buff{
+            Strength = 0,
+            Magic = 0,
+            Health = 0,
+            Speed = -5,
+        };
+
+        target.SendMessage("ReceiveBuff", slowDebuff);
+        }
     }
     
     public void Lightening(GameObject target, int turn)
     {
+       var projectile = weapon.GetComponent<Projectile>();
+        projectile.Shoot(target);
 
+        // TODO: Figure out paralyze stat and skip turn for other target character
+        Boolean isParalyzed = UnityEngine.Random.value <= 0.25;
+
+          if (isParalyzed) {
+            Buff paralyzeDebuff =  new Buff{
+            Strength = 0,
+            Magic = 0,
+            Health = 0,
+            Speed = -25,
+        };
+
+        target.SendMessage("ReceiveBuff", paralyzeDebuff);
+        }
     }
     
     public void Fire(GameObject target, int turn)
@@ -80,9 +110,30 @@ public class BlackMage : Character
             new CharacterAction
             {
                 ActionName = "Magic Missile",
-                ActionIcon = null,
+                ActionIcon = GlobalResources.BlackMageMagicMissileSprite,
                 Targets = Array.Empty<GameTarget>(),
-                OnInvoke = MagicMissile,
+                OnInvoke = this.MagicMissile,
+            },
+            new CharacterAction
+            {
+                ActionName = "Fire",
+                ActionIcon = GlobalResources.BlackMageFireAttackSprite,
+                Targets = Array.Empty<GameTarget>(),
+                OnInvoke = this.Fire,
+            },
+            new CharacterAction
+            {
+                ActionName = "Lightening",
+                ActionIcon = GlobalResources.BlackMageLightningAttackSprite,
+                Targets = Array.Empty<GameTarget>(),
+                OnInvoke = this.Lightening,
+            },
+            new CharacterAction
+            {
+                ActionName = "Ice",
+                ActionIcon = GlobalResources.BlackMageIceAttackSprite,
+                Targets = Array.Empty<GameTarget>(),
+                OnInvoke = this.Ice,
             }
         };
     }

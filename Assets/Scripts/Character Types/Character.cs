@@ -43,6 +43,7 @@ public abstract class Character : MonoBehaviour
     abstract public int CritialHitPercent { get; protected set; }
     abstract public int Defense { get; protected set; }
     abstract public int MagicDefense { get; protected set; }
+    // abstract public int IsParalyzed { get; protected set; }
 
     abstract protected List<Spell> AppliedSpells { get; set; }
 
@@ -62,7 +63,12 @@ public abstract class Character : MonoBehaviour
         Magic += buff.Magic;
         Strength += buff.Strength;
         CurrentHealth += buff.Health;
+        Speed += buff.Speed;
     }
+
+    // public virtual void SetParalysis(Boolean isParalyzed){
+    //     IsParalyzed = isParalyzed;
+    // }
 
     public virtual void DealDamage()
     {
